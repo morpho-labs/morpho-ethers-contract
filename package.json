@@ -1,6 +1,6 @@
 {
   "name": "@morpho-labs/morpho-ethers-contract",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Use Morpho contracts with ethers js",
   "main": "lib/src/index.js",
   "repository": {

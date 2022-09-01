@@ -7,8 +7,6 @@
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
 [![Semantic Release][semantic-release-img]][semantic-release-url]
 
-> ⚡🚀 Call multiple view functions, from multiple Smart Contracts, in a single RPC query!
-
 This package aims to facilitate the integration around morpho with ethers-v5. Instead of importing ABIs,
 finding implementations, and guessing which functions to call, this package gives you typed classes by using
 [typechain](https://github.com/dethcrypto/TypeChain), and mainnet addresses of deployed contracts.
