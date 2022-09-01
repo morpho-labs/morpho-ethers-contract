@@ -1,4 +1,4 @@
-# ethers-multicall
+# Morpho Ethers Contract
 
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]
@@ -10,7 +10,8 @@
 > ⚡🚀 Call multiple view functions, from multiple Smart Contracts, in a single RPC query!
 
 This package aims to facilitate the integration around morpho with ethers-v5. Instead of importing ABIs,
-finding implementations, and guessing which functions to call, this package gives you typed classes and mainnet addresses of deployed contracts.
+finding implementations, and guessing which functions to call, this package gives you typed classes by using
+[typechain](https://github.com/dethcrypto/TypeChain), and mainnet addresses of deployed contracts.
 
 NB: for security reasons, we invite you to always check the addresses of the contracts used, and check whether they are indeed those of Morpho.
 
