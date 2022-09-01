@@ -1,9 +1,7 @@
 import { providers, Wallet } from "ethers";
 import { formatUnits, parseUnits } from "ethers/lib/utils";
 
-import addresses from "./addresses";
-import { ERC20__factory } from "./factories";
-import { MorphoAaveV2__factory, MorphoAaveV2Lens__factory } from "./factories/aave-v2/mainnet";
+import { MorphoAaveV2Lens__factory, addresses, MorphoAaveV2__factory, ERC20__factory } from ".";
 
 (async () => {
   const provider = new providers.StaticJsonRpcProvider(process.env.RPC, "mainnet");

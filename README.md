@@ -32,9 +32,7 @@ yarn add @morpho-labs/morpho-ethers-contract
 import { providers, Wallet } from "ethers";
 import { formatUnits, parseUnits } from "ethers/lib/utils";
 
-import addresses from "@morpho-labs/morpho-ethers-contract/addresses";
-import { ERC20__factory } from "@morpho-labs/morpho-ethers-contract/factories";
-import { MorphoAaveV2__factory, MorphoAaveV2Lens__factory } from "@morpho-labs/morpho-ethers-contract/factories/aave-v2/mainnet";
+import { MorphoAaveV2Lens__factory, addresses, MorphoAaveV2__factory, ERC20__factory } from "@morpho-labs/morpho-ethers-contract/lib";
 
 (async () => {
     const provider = new providers.StaticJsonRpcProvider(process.env.RPC, "mainnet");

@@ -20,3 +20,5 @@ export { MorphoCompound__factory } from "./factories/compound/MorphoCompound__fa
 export type { MorphoCompoundLens } from "./compound/MorphoCompoundLens";
 export { MorphoCompoundLens__factory } from "./factories/compound/MorphoCompoundLens__factory";
 export { ERC20__factory } from "./factories/ERC20__factory";
+
+export { default as addresses } from "./addresses";
