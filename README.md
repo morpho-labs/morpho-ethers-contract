@@ -31,9 +31,9 @@ yarn add @morpho-labs/morpho-ethers-contract
 import { providers, Wallet } from "ethers";
 import { formatUnits, parseUnits } from "ethers/lib/utils";
 
+import addresses from "@morpho-labs/morpho-ethers-contract/addresses"
 import {
   MorphoAaveV2Lens__factory,
-  addresses,
   MorphoAaveV2__factory,
   ERC20__factory,
 } from "@morpho-labs/morpho-ethers-contract";

@@ -1,4 +1,4 @@
-export default {
+const addresses = {
   morphoDao: {
     morphoToken: "0x9994e35db50125e0df82e4c2dde62496ce330999",
     rewardsDistributor: "0x3b14e5c73e0a56d607a8688098326fd4b4292135",
@@ -27,3 +27,5 @@ export default {
     },
   },
 };
+
+export default addresses;
