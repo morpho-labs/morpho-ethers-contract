@@ -2,7 +2,7 @@
   "name": "@morpho-labs/morpho-ethers-contract",
   "version": "1.0.4",
   "description": "Use Morpho contracts with ethers js",
-  "main": "lib/src/index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/morpho-labs/morpho-ethers-contract.git"
