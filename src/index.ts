@@ -12,6 +12,7 @@ export type { compound };
 export type { ERC20 } from "./ERC20";
 export type { MorphoToken } from "./MorphoToken";
 export type { RewardsDistributor } from "./RewardsDistributor";
+export type { StEth } from "./StEth";
 export * as factories from "./factories";
 export type { AavePriceOracle } from "./aave-v2/mainnet/AavePriceOracle";
 export { AavePriceOracle__factory } from "./factories/aave-v2/mainnet/AavePriceOracle__factory";
@@ -42,3 +43,4 @@ export { MorphoCompoundLens__factory } from "./factories/compound/MorphoCompound
 export { ERC20__factory } from "./factories/ERC20__factory";
 export { MorphoToken__factory } from "./factories/MorphoToken__factory";
 export { RewardsDistributor__factory } from "./factories/RewardsDistributor__factory";
+export { StEth__factory } from "./factories/StEth__factory";
