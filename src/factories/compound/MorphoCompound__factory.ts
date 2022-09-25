@@ -28,11 +28,6 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "LowLevelDelegateCallFailed",
-    type: "error",
-  },
-  {
-    inputs: [],
     name: "MarketAlreadyCreated",
     type: "error",
   },
