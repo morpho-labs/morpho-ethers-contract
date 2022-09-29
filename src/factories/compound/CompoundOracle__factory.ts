@@ -20,12 +20,17 @@ const _abi = [
         type: "uint256",
       },
       {
-        internalType: "uint32",
+        internalType: "uint256",
         name: "anchorPeriod_",
-        type: "uint32",
+        type: "uint256",
       },
       {
         components: [
+          {
+            internalType: "address",
+            name: "cToken",
+            type: "address",
+          },
           {
             internalType: "address",
             name: "underlying",
@@ -79,6 +84,37 @@ const _abi = [
     ],
     stateMutability: "nonpayable",
     type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "bytes32",
+        name: "symbolHash",
+        type: "bytes32",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "anchorPrice",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "oldTimestamp",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "newTimestamp",
+        type: "uint256",
+      },
+    ],
+    name: "AnchorPriceUpdated",
+    type: "event",
   },
   {
     anonymous: false,
@@ -156,13 +192,13 @@ const _abi = [
       {
         indexed: false,
         internalType: "uint256",
-        name: "reporterPrice",
+        name: "reporter",
         type: "uint256",
       },
       {
         indexed: false,
         internalType: "uint256",
-        name: "anchorPrice",
+        name: "anchor",
         type: "uint256",
       },
     ],
@@ -189,56 +225,41 @@ const _abi = [
     type: "event",
   },
   {
-    inputs: [],
-    name: "ETH_BASE_UNIT",
-    outputs: [
+    anonymous: false,
+    inputs: [
       {
+        indexed: true,
+        internalType: "bytes32",
+        name: "symbolHash",
+        type: "bytes32",
+      },
+      {
+        indexed: false,
         internalType: "uint256",
-        name: "",
+        name: "oldTimestamp",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "newTimestamp",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "oldPrice",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "newPrice",
         type: "uint256",
       },
     ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "EXP_SCALE",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "MAX_INTEGER",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "MAX_TOKENS",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
+    name: "UniswapWindowUpdated",
+    type: "event",
   },
   {
     inputs: [],
@@ -265,9 +286,9 @@ const _abi = [
     name: "anchorPeriod",
     outputs: [
       {
-        internalType: "uint32",
+        internalType: "uint256",
         name: "",
-        type: "uint32",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -287,6 +308,32 @@ const _abi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "ethBaseUnit",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "expScale",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -298,6 +345,82 @@ const _abi = [
     outputs: [
       {
         components: [
+          {
+            internalType: "address",
+            name: "cToken",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "underlying",
+            type: "address",
+          },
+          {
+            internalType: "bytes32",
+            name: "symbolHash",
+            type: "bytes32",
+          },
+          {
+            internalType: "uint256",
+            name: "baseUnit",
+            type: "uint256",
+          },
+          {
+            internalType: "enum UniswapConfig.PriceSource",
+            name: "priceSource",
+            type: "uint8",
+          },
+          {
+            internalType: "uint256",
+            name: "fixedPrice",
+            type: "uint256",
+          },
+          {
+            internalType: "address",
+            name: "uniswapMarket",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "reporter",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "reporterMultiplier",
+            type: "uint256",
+          },
+          {
+            internalType: "bool",
+            name: "isUniswapReversed",
+            type: "bool",
+          },
+        ],
+        internalType: "struct UniswapConfig.TokenConfig",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "cToken",
+        type: "address",
+      },
+    ],
+    name: "getTokenConfigByCToken",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "cToken",
+            type: "address",
+          },
           {
             internalType: "address",
             name: "underlying",
@@ -366,6 +489,11 @@ const _abi = [
         components: [
           {
             internalType: "address",
+            name: "cToken",
+            type: "address",
+          },
+          {
+            internalType: "address",
             name: "underlying",
             type: "address",
           },
@@ -430,6 +558,11 @@ const _abi = [
     outputs: [
       {
         components: [
+          {
+            internalType: "address",
+            name: "cToken",
+            type: "address",
+          },
           {
             internalType: "address",
             name: "underlying",
@@ -498,6 +631,11 @@ const _abi = [
         components: [
           {
             internalType: "address",
+            name: "cToken",
+            type: "address",
+          },
+          {
+            internalType: "address",
             name: "underlying",
             type: "address",
           },
@@ -562,6 +700,11 @@ const _abi = [
     outputs: [
       {
         components: [
+          {
+            internalType: "address",
+            name: "cToken",
+            type: "address",
+          },
           {
             internalType: "address",
             name: "underlying",
@@ -650,11 +793,72 @@ const _abi = [
   },
   {
     inputs: [],
+    name: "maxTokens",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "",
+        type: "bytes32",
+      },
+    ],
+    name: "newObservations",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "timestamp",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "acc",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "numTokens",
     outputs: [
       {
         internalType: "uint256",
         name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "",
+        type: "bytes32",
+      },
+    ],
+    name: "oldObservations",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "timestamp",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "acc",
         type: "uint256",
       },
     ],
