@@ -31,6 +31,7 @@ import type {
 
 export declare namespace UniswapConfig {
   export type TokenConfigStruct = {
+    cToken: PromiseOrValue<string>;
     underlying: PromiseOrValue<string>;
     symbolHash: PromiseOrValue<BytesLike>;
     baseUnit: PromiseOrValue<BigNumberish>;
@@ -45,6 +46,7 @@ export declare namespace UniswapConfig {
   export type TokenConfigStructOutput = [
     string,
     string,
+    string,
     BigNumber,
     number,
     BigNumber,
@@ -53,6 +55,7 @@ export declare namespace UniswapConfig {
     BigNumber,
     boolean
   ] & {
+    cToken: string;
     underlying: string;
     symbolHash: string;
     baseUnit: BigNumber;
@@ -67,22 +70,24 @@ export declare namespace UniswapConfig {
 
 export interface CompoundOracleInterface extends utils.Interface {
   functions: {
-    "ETH_BASE_UNIT()": FunctionFragment;
-    "EXP_SCALE()": FunctionFragment;
-    "MAX_INTEGER()": FunctionFragment;
-    "MAX_TOKENS()": FunctionFragment;
     "acceptOwnership()": FunctionFragment;
     "activateFailover(bytes32)": FunctionFragment;
     "anchorPeriod()": FunctionFragment;
     "deactivateFailover(bytes32)": FunctionFragment;
+    "ethBaseUnit()": FunctionFragment;
+    "expScale()": FunctionFragment;
     "getTokenConfig(uint256)": FunctionFragment;
+    "getTokenConfigByCToken(address)": FunctionFragment;
     "getTokenConfigByReporter(address)": FunctionFragment;
     "getTokenConfigBySymbol(string)": FunctionFragment;
     "getTokenConfigBySymbolHash(bytes32)": FunctionFragment;
     "getTokenConfigByUnderlying(address)": FunctionFragment;
     "getUnderlyingPrice(address)": FunctionFragment;
     "lowerBoundAnchorRatio()": FunctionFragment;
+    "maxTokens()": FunctionFragment;
+    "newObservations(bytes32)": FunctionFragment;
     "numTokens()": FunctionFragment;
+    "oldObservations(bytes32)": FunctionFragment;
     "owner()": FunctionFragment;
     "pokeFailedOverPrice(bytes32)": FunctionFragment;
     "price(string)": FunctionFragment;
@@ -94,22 +99,24 @@ export interface CompoundOracleInterface extends utils.Interface {
 
   getFunction(
     nameOrSignatureOrTopic:
-      | "ETH_BASE_UNIT"
-      | "EXP_SCALE"
-      | "MAX_INTEGER"
-      | "MAX_TOKENS"
       | "acceptOwnership"
       | "activateFailover"
       | "anchorPeriod"
       | "deactivateFailover"
+      | "ethBaseUnit"
+      | "expScale"
       | "getTokenConfig"
+      | "getTokenConfigByCToken"
       | "getTokenConfigByReporter"
       | "getTokenConfigBySymbol"
       | "getTokenConfigBySymbolHash"
       | "getTokenConfigByUnderlying"
       | "getUnderlyingPrice"
       | "lowerBoundAnchorRatio"
+      | "maxTokens"
+      | "newObservations"
       | "numTokens"
+      | "oldObservations"
       | "owner"
       | "pokeFailedOverPrice"
       | "price"
@@ -119,19 +126,6 @@ export interface CompoundOracleInterface extends utils.Interface {
       | "validate"
   ): FunctionFragment;
 
-  encodeFunctionData(
-    functionFragment: "ETH_BASE_UNIT",
-    values?: undefined
-  ): string;
-  encodeFunctionData(functionFragment: "EXP_SCALE", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "MAX_INTEGER",
-    values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "MAX_TOKENS",
-    values?: undefined
-  ): string;
   encodeFunctionData(
     functionFragment: "acceptOwnership",
     values?: undefined
@@ -149,8 +143,17 @@ export interface CompoundOracleInterface extends utils.Interface {
     values: [PromiseOrValue<BytesLike>]
   ): string;
   encodeFunctionData(
+    functionFragment: "ethBaseUnit",
+    values?: undefined
+  ): string;
+  encodeFunctionData(functionFragment: "expScale", values?: undefined): string;
+  encodeFunctionData(
     functionFragment: "getTokenConfig",
     values: [PromiseOrValue<BigNumberish>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "getTokenConfigByCToken",
+    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "getTokenConfigByReporter",
@@ -176,7 +179,16 @@ export interface CompoundOracleInterface extends utils.Interface {
     functionFragment: "lowerBoundAnchorRatio",
     values?: undefined
   ): string;
+  encodeFunctionData(functionFragment: "maxTokens", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "newObservations",
+    values: [PromiseOrValue<BytesLike>]
+  ): string;
   encodeFunctionData(functionFragment: "numTokens", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "oldObservations",
+    values: [PromiseOrValue<BytesLike>]
+  ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "pokeFailedOverPrice",
@@ -209,16 +221,6 @@ export interface CompoundOracleInterface extends utils.Interface {
   ): string;
 
   decodeFunctionResult(
-    functionFragment: "ETH_BASE_UNIT",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "EXP_SCALE", data: BytesLike): Result;
-  decodeFunctionResult(
-    functionFragment: "MAX_INTEGER",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(functionFragment: "MAX_TOKENS", data: BytesLike): Result;
-  decodeFunctionResult(
     functionFragment: "acceptOwnership",
     data: BytesLike
   ): Result;
@@ -235,7 +237,16 @@ export interface CompoundOracleInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "ethBaseUnit",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "expScale", data: BytesLike): Result;
+  decodeFunctionResult(
     functionFragment: "getTokenConfig",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "getTokenConfigByCToken",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -262,7 +273,16 @@ export interface CompoundOracleInterface extends utils.Interface {
     functionFragment: "lowerBoundAnchorRatio",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "maxTokens", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "newObservations",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "numTokens", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "oldObservations",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "pokeFailedOverPrice",
@@ -281,21 +301,39 @@ export interface CompoundOracleInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "validate", data: BytesLike): Result;
 
   events: {
+    "AnchorPriceUpdated(bytes32,uint256,uint256,uint256)": EventFragment;
     "FailoverActivated(bytes32)": EventFragment;
     "FailoverDeactivated(bytes32)": EventFragment;
     "OwnershipTransferRequested(address,address)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
     "PriceGuarded(bytes32,uint256,uint256)": EventFragment;
     "PriceUpdated(bytes32,uint256)": EventFragment;
+    "UniswapWindowUpdated(bytes32,uint256,uint256,uint256,uint256)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "AnchorPriceUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "FailoverActivated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "FailoverDeactivated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferRequested"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "PriceGuarded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "PriceUpdated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "UniswapWindowUpdated"): EventFragment;
 }
+
+export interface AnchorPriceUpdatedEventObject {
+  symbolHash: string;
+  anchorPrice: BigNumber;
+  oldTimestamp: BigNumber;
+  newTimestamp: BigNumber;
+}
+export type AnchorPriceUpdatedEvent = TypedEvent<
+  [string, BigNumber, BigNumber, BigNumber],
+  AnchorPriceUpdatedEventObject
+>;
+
+export type AnchorPriceUpdatedEventFilter =
+  TypedEventFilter<AnchorPriceUpdatedEvent>;
 
 export interface FailoverActivatedEventObject {
   symbolHash: string;
@@ -345,8 +383,8 @@ export type OwnershipTransferredEventFilter =
 
 export interface PriceGuardedEventObject {
   symbolHash: string;
-  reporterPrice: BigNumber;
-  anchorPrice: BigNumber;
+  reporter: BigNumber;
+  anchor: BigNumber;
 }
 export type PriceGuardedEvent = TypedEvent<
   [string, BigNumber, BigNumber],
@@ -365,6 +403,21 @@ export type PriceUpdatedEvent = TypedEvent<
 >;
 
 export type PriceUpdatedEventFilter = TypedEventFilter<PriceUpdatedEvent>;
+
+export interface UniswapWindowUpdatedEventObject {
+  symbolHash: string;
+  oldTimestamp: BigNumber;
+  newTimestamp: BigNumber;
+  oldPrice: BigNumber;
+  newPrice: BigNumber;
+}
+export type UniswapWindowUpdatedEvent = TypedEvent<
+  [string, BigNumber, BigNumber, BigNumber, BigNumber],
+  UniswapWindowUpdatedEventObject
+>;
+
+export type UniswapWindowUpdatedEventFilter =
+  TypedEventFilter<UniswapWindowUpdatedEvent>;
 
 export interface CompoundOracle extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -393,14 +446,6 @@ export interface CompoundOracle extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
-    ETH_BASE_UNIT(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    EXP_SCALE(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    MAX_INTEGER(overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    MAX_TOKENS(overrides?: CallOverrides): Promise<[BigNumber]>;
-
     acceptOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -410,15 +455,24 @@ export interface CompoundOracle extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    anchorPeriod(overrides?: CallOverrides): Promise<[number]>;
+    anchorPeriod(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     deactivateFailover(
       symbolHash: PromiseOrValue<BytesLike>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    ethBaseUnit(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    expScale(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     getTokenConfig(
       i: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<[UniswapConfig.TokenConfigStructOutput]>;
+
+    getTokenConfigByCToken(
+      cToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[UniswapConfig.TokenConfigStructOutput]>;
 
@@ -449,7 +503,23 @@ export interface CompoundOracle extends BaseContract {
 
     lowerBoundAnchorRatio(overrides?: CallOverrides): Promise<[BigNumber]>;
 
+    maxTokens(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    newObservations(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<
+      [BigNumber, BigNumber] & { timestamp: BigNumber; acc: BigNumber }
+    >;
+
     numTokens(overrides?: CallOverrides): Promise<[BigNumber]>;
+
+    oldObservations(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<
+      [BigNumber, BigNumber] & { timestamp: BigNumber; acc: BigNumber }
+    >;
 
     owner(overrides?: CallOverrides): Promise<[string]>;
 
@@ -486,14 +556,6 @@ export interface CompoundOracle extends BaseContract {
     ): Promise<ContractTransaction>;
   };
 
-  ETH_BASE_UNIT(overrides?: CallOverrides): Promise<BigNumber>;
-
-  EXP_SCALE(overrides?: CallOverrides): Promise<BigNumber>;
-
-  MAX_INTEGER(overrides?: CallOverrides): Promise<BigNumber>;
-
-  MAX_TOKENS(overrides?: CallOverrides): Promise<BigNumber>;
-
   acceptOwnership(
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -503,15 +565,24 @@ export interface CompoundOracle extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  anchorPeriod(overrides?: CallOverrides): Promise<number>;
+  anchorPeriod(overrides?: CallOverrides): Promise<BigNumber>;
 
   deactivateFailover(
     symbolHash: PromiseOrValue<BytesLike>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  ethBaseUnit(overrides?: CallOverrides): Promise<BigNumber>;
+
+  expScale(overrides?: CallOverrides): Promise<BigNumber>;
+
   getTokenConfig(
     i: PromiseOrValue<BigNumberish>,
+    overrides?: CallOverrides
+  ): Promise<UniswapConfig.TokenConfigStructOutput>;
+
+  getTokenConfigByCToken(
+    cToken: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<UniswapConfig.TokenConfigStructOutput>;
 
@@ -542,7 +613,19 @@ export interface CompoundOracle extends BaseContract {
 
   lowerBoundAnchorRatio(overrides?: CallOverrides): Promise<BigNumber>;
 
+  maxTokens(overrides?: CallOverrides): Promise<BigNumber>;
+
+  newObservations(
+    arg0: PromiseOrValue<BytesLike>,
+    overrides?: CallOverrides
+  ): Promise<[BigNumber, BigNumber] & { timestamp: BigNumber; acc: BigNumber }>;
+
   numTokens(overrides?: CallOverrides): Promise<BigNumber>;
+
+  oldObservations(
+    arg0: PromiseOrValue<BytesLike>,
+    overrides?: CallOverrides
+  ): Promise<[BigNumber, BigNumber] & { timestamp: BigNumber; acc: BigNumber }>;
 
   owner(overrides?: CallOverrides): Promise<string>;
 
@@ -579,14 +662,6 @@ export interface CompoundOracle extends BaseContract {
   ): Promise<ContractTransaction>;
 
   callStatic: {
-    ETH_BASE_UNIT(overrides?: CallOverrides): Promise<BigNumber>;
-
-    EXP_SCALE(overrides?: CallOverrides): Promise<BigNumber>;
-
-    MAX_INTEGER(overrides?: CallOverrides): Promise<BigNumber>;
-
-    MAX_TOKENS(overrides?: CallOverrides): Promise<BigNumber>;
-
     acceptOwnership(overrides?: CallOverrides): Promise<void>;
 
     activateFailover(
@@ -594,15 +669,24 @@ export interface CompoundOracle extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    anchorPeriod(overrides?: CallOverrides): Promise<number>;
+    anchorPeriod(overrides?: CallOverrides): Promise<BigNumber>;
 
     deactivateFailover(
       symbolHash: PromiseOrValue<BytesLike>,
       overrides?: CallOverrides
     ): Promise<void>;
 
+    ethBaseUnit(overrides?: CallOverrides): Promise<BigNumber>;
+
+    expScale(overrides?: CallOverrides): Promise<BigNumber>;
+
     getTokenConfig(
       i: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<UniswapConfig.TokenConfigStructOutput>;
+
+    getTokenConfigByCToken(
+      cToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<UniswapConfig.TokenConfigStructOutput>;
 
@@ -633,7 +717,23 @@ export interface CompoundOracle extends BaseContract {
 
     lowerBoundAnchorRatio(overrides?: CallOverrides): Promise<BigNumber>;
 
+    maxTokens(overrides?: CallOverrides): Promise<BigNumber>;
+
+    newObservations(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<
+      [BigNumber, BigNumber] & { timestamp: BigNumber; acc: BigNumber }
+    >;
+
     numTokens(overrides?: CallOverrides): Promise<BigNumber>;
+
+    oldObservations(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<
+      [BigNumber, BigNumber] & { timestamp: BigNumber; acc: BigNumber }
+    >;
 
     owner(overrides?: CallOverrides): Promise<string>;
 
@@ -671,6 +771,19 @@ export interface CompoundOracle extends BaseContract {
   };
 
   filters: {
+    "AnchorPriceUpdated(bytes32,uint256,uint256,uint256)"(
+      symbolHash?: PromiseOrValue<BytesLike> | null,
+      anchorPrice?: null,
+      oldTimestamp?: null,
+      newTimestamp?: null
+    ): AnchorPriceUpdatedEventFilter;
+    AnchorPriceUpdated(
+      symbolHash?: PromiseOrValue<BytesLike> | null,
+      anchorPrice?: null,
+      oldTimestamp?: null,
+      newTimestamp?: null
+    ): AnchorPriceUpdatedEventFilter;
+
     "FailoverActivated(bytes32)"(
       symbolHash?: PromiseOrValue<BytesLike> | null
     ): FailoverActivatedEventFilter;
@@ -705,13 +818,13 @@ export interface CompoundOracle extends BaseContract {
 
     "PriceGuarded(bytes32,uint256,uint256)"(
       symbolHash?: PromiseOrValue<BytesLike> | null,
-      reporterPrice?: null,
-      anchorPrice?: null
+      reporter?: null,
+      anchor?: null
     ): PriceGuardedEventFilter;
     PriceGuarded(
       symbolHash?: PromiseOrValue<BytesLike> | null,
-      reporterPrice?: null,
-      anchorPrice?: null
+      reporter?: null,
+      anchor?: null
     ): PriceGuardedEventFilter;
 
     "PriceUpdated(bytes32,uint256)"(
@@ -722,17 +835,24 @@ export interface CompoundOracle extends BaseContract {
       symbolHash?: PromiseOrValue<BytesLike> | null,
       price?: null
     ): PriceUpdatedEventFilter;
+
+    "UniswapWindowUpdated(bytes32,uint256,uint256,uint256,uint256)"(
+      symbolHash?: PromiseOrValue<BytesLike> | null,
+      oldTimestamp?: null,
+      newTimestamp?: null,
+      oldPrice?: null,
+      newPrice?: null
+    ): UniswapWindowUpdatedEventFilter;
+    UniswapWindowUpdated(
+      symbolHash?: PromiseOrValue<BytesLike> | null,
+      oldTimestamp?: null,
+      newTimestamp?: null,
+      oldPrice?: null,
+      newPrice?: null
+    ): UniswapWindowUpdatedEventFilter;
   };
 
   estimateGas: {
-    ETH_BASE_UNIT(overrides?: CallOverrides): Promise<BigNumber>;
-
-    EXP_SCALE(overrides?: CallOverrides): Promise<BigNumber>;
-
-    MAX_INTEGER(overrides?: CallOverrides): Promise<BigNumber>;
-
-    MAX_TOKENS(overrides?: CallOverrides): Promise<BigNumber>;
-
     acceptOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -749,8 +869,17 @@ export interface CompoundOracle extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    ethBaseUnit(overrides?: CallOverrides): Promise<BigNumber>;
+
+    expScale(overrides?: CallOverrides): Promise<BigNumber>;
+
     getTokenConfig(
       i: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    getTokenConfigByCToken(
+      cToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -781,7 +910,19 @@ export interface CompoundOracle extends BaseContract {
 
     lowerBoundAnchorRatio(overrides?: CallOverrides): Promise<BigNumber>;
 
+    maxTokens(overrides?: CallOverrides): Promise<BigNumber>;
+
+    newObservations(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     numTokens(overrides?: CallOverrides): Promise<BigNumber>;
+
+    oldObservations(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
 
     owner(overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -817,14 +958,6 @@ export interface CompoundOracle extends BaseContract {
   };
 
   populateTransaction: {
-    ETH_BASE_UNIT(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    EXP_SCALE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    MAX_INTEGER(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    MAX_TOKENS(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
     acceptOwnership(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
@@ -841,8 +974,17 @@ export interface CompoundOracle extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
+    ethBaseUnit(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    expScale(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     getTokenConfig(
       i: PromiseOrValue<BigNumberish>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    getTokenConfigByCToken(
+      cToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -875,7 +1017,19 @@ export interface CompoundOracle extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    maxTokens(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    newObservations(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     numTokens(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    oldObservations(
+      arg0: PromiseOrValue<BytesLike>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
