@@ -11,6 +11,9 @@ This package aims to facilitate the integration around morpho with ethers-v5. In
 finding implementations, and guessing which functions to call, this package gives you typed classes by using
 [typechain](https://github.com/dethcrypto/TypeChain), and mainnet addresses of deployed contracts.
 
+The package contains all contracts to interract with Morpho and withe the Compound and Aave pools.
+
+
 NB: for security reasons, we invite you to always check the addresses of the contracts used, and check whether they are indeed those of Morpho.
 
 You will find more information on the integration of Morpho in the [developer documentation](https://developers.morpho.xyz/get-started).
