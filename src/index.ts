@@ -5,10 +5,13 @@
 /* eslint-disable */
 import type * as aaveV2 from "./aave-v2";
 import type * as compound from "./compound";
+import type * as uniswap from "./uniswap";
 
 export type { aaveV2 };
 
 export type { compound };
+
+export type { uniswap };
 export type { ERC20 } from "./ERC20";
 export type { MorphoToken } from "./MorphoToken";
 export type { RewardsDistributor } from "./RewardsDistributor";
@@ -44,3 +47,5 @@ export { ERC20__factory } from "./factories/ERC20__factory";
 export { MorphoToken__factory } from "./factories/MorphoToken__factory";
 export { RewardsDistributor__factory } from "./factories/RewardsDistributor__factory";
 export { StEth__factory } from "./factories/StEth__factory";
+export type { SwapRouter } from "./uniswap/SwapRouter";
+export { SwapRouter__factory } from "./factories/uniswap/SwapRouter__factory";
