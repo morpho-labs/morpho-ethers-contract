@@ -137,7 +137,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -180,7 +180,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -217,7 +217,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -285,7 +285,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -310,7 +310,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -329,7 +329,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -360,7 +360,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -403,7 +403,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -440,7 +440,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -477,7 +477,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -582,7 +582,140 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "IsBorrowPausedSet",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "_isDeprecated",
+        type: "bool",
+      },
+    ],
+    name: "IsDeprecatedSet",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "IsLiquidateBorrowPausedSet",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "IsLiquidateCollateralPausedSet",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "IsRepayPausedSet",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "IsSupplyPausedSet",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "IsWithdrawPausedSet",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -639,7 +772,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -658,13 +791,13 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
         indexed: false,
         internalType: "bool",
-        name: "_p2pDisabled",
+        name: "_isP2PDisabled",
         type: "bool",
       },
     ],
@@ -677,7 +810,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -696,7 +829,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -728,7 +861,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -747,7 +880,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -880,7 +1013,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -898,7 +1031,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -981,7 +1114,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1012,7 +1145,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1173,7 +1306,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1197,7 +1330,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1450,6 +1583,55 @@ const _abi = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "marketPauseStatus",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "isSupplyPaused",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "isBorrowPaused",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "isWithdrawPaused",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "isRepayPaused",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "isLiquidateCollateralPaused",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "isLiquidateBorrowPaused",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "isDeprecated",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "uint256",
         name: "",
         type: "uint256",
@@ -1573,7 +1755,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1682,6 +1864,176 @@ const _abi = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "setIsBorrowPaused",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "setIsClaimRewardsPaused",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "_isDeprecated",
+        type: "bool",
+      },
+    ],
+    name: "setIsDeprecated",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "setIsLiquidateBorrowPaused",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "setIsLiquidateCollateralPaused",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "_isP2PDisabled",
+        type: "bool",
+      },
+    ],
+    name: "setIsP2PDisabled",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "setIsPausedForAllMarkets",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "setIsRepayPaused",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "setIsSupplyPaused",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "_isPaused",
+        type: "bool",
+      },
+    ],
+    name: "setIsWithdrawPaused",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "uint256",
         name: "_newMaxSortedUsers",
         type: "uint256",
@@ -1696,7 +2048,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1714,7 +2066,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1732,7 +2084,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1750,7 +2102,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1781,7 +2133,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1825,7 +2177,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1848,7 +2200,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
@@ -1931,7 +2283,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
     ],
@@ -1981,7 +2333,7 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_poolTokenAddress",
+        name: "_poolToken",
         type: "address",
       },
       {
