@@ -24,6 +24,34 @@ import type {
 } from "ethers";
 
 export declare namespace Types {
+  export type MarketPauseStatusStruct = {
+    isSupplyPaused: PromiseOrValue<boolean>;
+    isBorrowPaused: PromiseOrValue<boolean>;
+    isWithdrawPaused: PromiseOrValue<boolean>;
+    isRepayPaused: PromiseOrValue<boolean>;
+    isLiquidateCollateralPaused: PromiseOrValue<boolean>;
+    isLiquidateBorrowPaused: PromiseOrValue<boolean>;
+    isDeprecated: PromiseOrValue<boolean>;
+  };
+
+  export type MarketPauseStatusStructOutput = [
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean
+  ] & {
+    isSupplyPaused: boolean;
+    isBorrowPaused: boolean;
+    isWithdrawPaused: boolean;
+    isRepayPaused: boolean;
+    isLiquidateCollateralPaused: boolean;
+    isLiquidateBorrowPaused: boolean;
+    isDeprecated: boolean;
+  };
+
   export type LiquidityDataStruct = {
     collateral: PromiseOrValue<BigNumberish>;
     maxDebt: PromiseOrValue<BigNumberish>;
@@ -81,6 +109,8 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
     "_getIndexes(address)": FunctionFragment;
     "_getTotalMarketBorrow(address)": FunctionFragment;
     "_getTotalMarketSupply(address)": FunctionFragment;
+    "ST_ETH()": FunctionFragment;
+    "ST_ETH_BASE_REBASE_INDEX()": FunctionFragment;
     "addressesProvider()": FunctionFragment;
     "computeLiquidationRepayAmount(address,address,address)": FunctionFragment;
     "getAdvancedMarketData(address)": FunctionFragment;
@@ -97,6 +127,7 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
     "getIndexes(address)": FunctionFragment;
     "getMainMarketData(address)": FunctionFragment;
     "getMarketConfiguration(address)": FunctionFragment;
+    "getMarketPauseStatus(address)": FunctionFragment;
     "getNextUserBorrowRatePerYear(address,address,uint256)": FunctionFragment;
     "getNextUserSupplyRatePerYear(address,address,uint256)": FunctionFragment;
     "getRatesPerYear(address)": FunctionFragment;
@@ -111,9 +142,8 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
     "getUserLiquidityDataForAsset(address,address,address)": FunctionFragment;
     "getUserMaxCapacitiesForAsset(address,address)": FunctionFragment;
     "isLiquidatable(address)": FunctionFragment;
+    "isLiquidatable(address,address)": FunctionFragment;
     "isMarketCreated(address)": FunctionFragment;
-    "isMarketCreatedAndNotPaused(address)": FunctionFragment;
-    "isMarketCreatedAndNotPausedNorPartiallyPaused(address)": FunctionFragment;
     "morpho()": FunctionFragment;
     "pool()": FunctionFragment;
   };
@@ -127,6 +157,8 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
       | "_getIndexes"
       | "_getTotalMarketBorrow"
       | "_getTotalMarketSupply"
+      | "ST_ETH"
+      | "ST_ETH_BASE_REBASE_INDEX"
       | "addressesProvider"
       | "computeLiquidationRepayAmount"
       | "getAdvancedMarketData"
@@ -143,6 +175,7 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
       | "getIndexes"
       | "getMainMarketData"
       | "getMarketConfiguration"
+      | "getMarketPauseStatus"
       | "getNextUserBorrowRatePerYear"
       | "getNextUserSupplyRatePerYear"
       | "getRatesPerYear"
@@ -156,10 +189,9 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
       | "getUserHypotheticalHealthFactor"
       | "getUserLiquidityDataForAsset"
       | "getUserMaxCapacitiesForAsset"
-      | "isLiquidatable"
+      | "isLiquidatable(address)"
+      | "isLiquidatable(address,address)"
       | "isMarketCreated"
-      | "isMarketCreatedAndNotPaused"
-      | "isMarketCreatedAndNotPausedNorPartiallyPaused"
       | "morpho"
       | "pool"
   ): FunctionFragment;
@@ -191,6 +223,11 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "_getTotalMarketSupply",
     values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(functionFragment: "ST_ETH", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "ST_ETH_BASE_REBASE_INDEX",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "addressesProvider",
@@ -261,6 +298,10 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
+    functionFragment: "getMarketPauseStatus",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "getNextUserBorrowRatePerYear",
     values: [
       PromiseOrValue<string>,
@@ -335,19 +376,15 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
     values: [PromiseOrValue<string>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "isLiquidatable",
+    functionFragment: "isLiquidatable(address)",
     values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "isLiquidatable(address,address)",
+    values: [PromiseOrValue<string>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
     functionFragment: "isMarketCreated",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "isMarketCreatedAndNotPaused",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "isMarketCreatedAndNotPausedNorPartiallyPaused",
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(functionFragment: "morpho", values?: undefined): string;
@@ -379,6 +416,11 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "_getTotalMarketSupply",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(functionFragment: "ST_ETH", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "ST_ETH_BASE_REBASE_INDEX",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -443,6 +485,10 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "getMarketPauseStatus",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "getNextUserBorrowRatePerYear",
     data: BytesLike
   ): Result;
@@ -495,19 +541,15 @@ export interface MorphoAaveV2LensInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "isLiquidatable",
+    functionFragment: "isLiquidatable(address)",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "isLiquidatable(address,address)",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
     functionFragment: "isMarketCreated",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "isMarketCreatedAndNotPaused",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "isMarketCreatedAndNotPausedNorPartiallyPaused",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "morpho", data: BytesLike): Result;
@@ -612,12 +654,16 @@ export interface MorphoAaveV2Lens extends BaseContract {
       }
     >;
 
+    ST_ETH(overrides?: CallOverrides): Promise<[string]>;
+
+    ST_ETH_BASE_REBASE_INDEX(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     addressesProvider(overrides?: CallOverrides): Promise<[string]>;
 
     computeLiquidationRepayAmount(
       _user: PromiseOrValue<string>,
-      _poolTokenBorrowedAddress: PromiseOrValue<string>,
-      _poolTokenCollateralAddress: PromiseOrValue<string>,
+      _poolTokenBorrowed: PromiseOrValue<string>,
+      _poolTokenCollateral: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
@@ -778,6 +824,11 @@ export interface MorphoAaveV2Lens extends BaseContract {
       }
     >;
 
+    getMarketPauseStatus(
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[Types.MarketPauseStatusStructOutput]>;
+
     getNextUserBorrowRatePerYear(
       _poolToken: PromiseOrValue<string>,
       _user: PromiseOrValue<string>,
@@ -910,22 +961,18 @@ export interface MorphoAaveV2Lens extends BaseContract {
       }
     >;
 
-    isLiquidatable(
+    "isLiquidatable(address)"(
       _user: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
+    "isLiquidatable(address,address)"(
+      _user: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
     isMarketCreated(
-      _poolToken: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
-
-    isMarketCreatedAndNotPaused(
-      _poolToken: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
-
-    isMarketCreatedAndNotPausedNorPartiallyPaused(
       _poolToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<[boolean]>;
@@ -1002,12 +1049,16 @@ export interface MorphoAaveV2Lens extends BaseContract {
     }
   >;
 
+  ST_ETH(overrides?: CallOverrides): Promise<string>;
+
+  ST_ETH_BASE_REBASE_INDEX(overrides?: CallOverrides): Promise<BigNumber>;
+
   addressesProvider(overrides?: CallOverrides): Promise<string>;
 
   computeLiquidationRepayAmount(
     _user: PromiseOrValue<string>,
-    _poolTokenBorrowedAddress: PromiseOrValue<string>,
-    _poolTokenCollateralAddress: PromiseOrValue<string>,
+    _poolTokenBorrowed: PromiseOrValue<string>,
+    _poolTokenCollateral: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
@@ -1166,6 +1217,11 @@ export interface MorphoAaveV2Lens extends BaseContract {
     }
   >;
 
+  getMarketPauseStatus(
+    _poolToken: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<Types.MarketPauseStatusStructOutput>;
+
   getNextUserBorrowRatePerYear(
     _poolToken: PromiseOrValue<string>,
     _user: PromiseOrValue<string>,
@@ -1287,22 +1343,18 @@ export interface MorphoAaveV2Lens extends BaseContract {
     [BigNumber, BigNumber] & { withdrawable: BigNumber; borrowable: BigNumber }
   >;
 
-  isLiquidatable(
+  "isLiquidatable(address)"(
     _user: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<boolean>;
 
+  "isLiquidatable(address,address)"(
+    _user: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
   isMarketCreated(
-    _poolToken: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  isMarketCreatedAndNotPaused(
-    _poolToken: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  isMarketCreatedAndNotPausedNorPartiallyPaused(
     _poolToken: PromiseOrValue<string>,
     overrides?: CallOverrides
   ): Promise<boolean>;
@@ -1381,12 +1433,16 @@ export interface MorphoAaveV2Lens extends BaseContract {
       }
     >;
 
+    ST_ETH(overrides?: CallOverrides): Promise<string>;
+
+    ST_ETH_BASE_REBASE_INDEX(overrides?: CallOverrides): Promise<BigNumber>;
+
     addressesProvider(overrides?: CallOverrides): Promise<string>;
 
     computeLiquidationRepayAmount(
       _user: PromiseOrValue<string>,
-      _poolTokenBorrowedAddress: PromiseOrValue<string>,
-      _poolTokenCollateralAddress: PromiseOrValue<string>,
+      _poolTokenBorrowed: PromiseOrValue<string>,
+      _poolTokenCollateral: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1545,6 +1601,11 @@ export interface MorphoAaveV2Lens extends BaseContract {
       }
     >;
 
+    getMarketPauseStatus(
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<Types.MarketPauseStatusStructOutput>;
+
     getNextUserBorrowRatePerYear(
       _poolToken: PromiseOrValue<string>,
       _user: PromiseOrValue<string>,
@@ -1669,22 +1730,18 @@ export interface MorphoAaveV2Lens extends BaseContract {
       }
     >;
 
-    isLiquidatable(
+    "isLiquidatable(address)"(
       _user: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<boolean>;
 
+    "isLiquidatable(address,address)"(
+      _user: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
     isMarketCreated(
-      _poolToken: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    isMarketCreatedAndNotPaused(
-      _poolToken: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    isMarketCreatedAndNotPausedNorPartiallyPaused(
       _poolToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<boolean>;
@@ -1732,12 +1789,16 @@ export interface MorphoAaveV2Lens extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    ST_ETH(overrides?: CallOverrides): Promise<BigNumber>;
+
+    ST_ETH_BASE_REBASE_INDEX(overrides?: CallOverrides): Promise<BigNumber>;
+
     addressesProvider(overrides?: CallOverrides): Promise<BigNumber>;
 
     computeLiquidationRepayAmount(
       _user: PromiseOrValue<string>,
-      _poolTokenBorrowedAddress: PromiseOrValue<string>,
-      _poolTokenCollateralAddress: PromiseOrValue<string>,
+      _poolTokenBorrowed: PromiseOrValue<string>,
+      _poolTokenCollateral: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1808,6 +1869,11 @@ export interface MorphoAaveV2Lens extends BaseContract {
     ): Promise<BigNumber>;
 
     getMarketConfiguration(
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    getMarketPauseStatus(
       _poolToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -1884,22 +1950,18 @@ export interface MorphoAaveV2Lens extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    isLiquidatable(
+    "isLiquidatable(address)"(
       _user: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    "isLiquidatable(address,address)"(
+      _user: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     isMarketCreated(
-      _poolToken: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    isMarketCreatedAndNotPaused(
-      _poolToken: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    isMarketCreatedAndNotPausedNorPartiallyPaused(
       _poolToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
@@ -1945,12 +2007,18 @@ export interface MorphoAaveV2Lens extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    ST_ETH(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    ST_ETH_BASE_REBASE_INDEX(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     addressesProvider(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     computeLiquidationRepayAmount(
       _user: PromiseOrValue<string>,
-      _poolTokenBorrowedAddress: PromiseOrValue<string>,
-      _poolTokenCollateralAddress: PromiseOrValue<string>,
+      _poolTokenBorrowed: PromiseOrValue<string>,
+      _poolTokenCollateral: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
@@ -2021,6 +2089,11 @@ export interface MorphoAaveV2Lens extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getMarketConfiguration(
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    getMarketPauseStatus(
       _poolToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
@@ -2097,22 +2170,18 @@ export interface MorphoAaveV2Lens extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    isLiquidatable(
+    "isLiquidatable(address)"(
       _user: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    "isLiquidatable(address,address)"(
+      _user: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     isMarketCreated(
-      _poolToken: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    isMarketCreatedAndNotPaused(
-      _poolToken: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    isMarketCreatedAndNotPausedNorPartiallyPaused(
       _poolToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;

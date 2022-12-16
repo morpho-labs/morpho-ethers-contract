@@ -2052,66 +2052,12 @@ const _abi = [
         type: "address",
       },
       {
-        internalType: "bool",
-        name: "_newStatus",
-        type: "bool",
-      },
-    ],
-    name: "setP2PDisable",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_poolToken",
-        type: "address",
-      },
-      {
         internalType: "uint16",
         name: "_p2pIndexCursor",
         type: "uint16",
       },
     ],
     name: "setP2PIndexCursor",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_poolToken",
-        type: "address",
-      },
-      {
-        internalType: "bool",
-        name: "_newStatus",
-        type: "bool",
-      },
-    ],
-    name: "setPartialPauseStatus",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_poolToken",
-        type: "address",
-      },
-      {
-        internalType: "bool",
-        name: "_newStatus",
-        type: "bool",
-      },
-    ],
-    name: "setPauseStatus",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

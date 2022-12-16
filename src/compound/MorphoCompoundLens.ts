@@ -26,6 +26,34 @@ import type {
 } from "ethers";
 
 export declare namespace Types {
+  export type MarketPauseStatusStruct = {
+    isSupplyPaused: PromiseOrValue<boolean>;
+    isBorrowPaused: PromiseOrValue<boolean>;
+    isWithdrawPaused: PromiseOrValue<boolean>;
+    isRepayPaused: PromiseOrValue<boolean>;
+    isLiquidateCollateralPaused: PromiseOrValue<boolean>;
+    isLiquidateBorrowPaused: PromiseOrValue<boolean>;
+    isDeprecated: PromiseOrValue<boolean>;
+  };
+
+  export type MarketPauseStatusStructOutput = [
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean,
+    boolean
+  ] & {
+    isSupplyPaused: boolean;
+    isBorrowPaused: boolean;
+    isWithdrawPaused: boolean;
+    isRepayPaused: boolean;
+    isLiquidateCollateralPaused: boolean;
+    isLiquidateBorrowPaused: boolean;
+    isDeprecated: boolean;
+  };
+
   export type AssetLiquidityDataStruct = {
     collateralValue: PromiseOrValue<BigNumberish>;
     maxDebtValue: PromiseOrValue<BigNumberish>;
@@ -74,6 +102,7 @@ export interface MorphoCompoundLensInterface extends utils.Interface {
     "getIndexes(address,bool)": FunctionFragment;
     "getMainMarketData(address)": FunctionFragment;
     "getMarketConfiguration(address)": FunctionFragment;
+    "getMarketPauseStatus(address)": FunctionFragment;
     "getNextUserBorrowRatePerBlock(address,address,uint256)": FunctionFragment;
     "getNextUserSupplyRatePerBlock(address,address,uint256)": FunctionFragment;
     "getRatesPerBlock(address)": FunctionFragment;
@@ -88,10 +117,8 @@ export interface MorphoCompoundLensInterface extends utils.Interface {
     "getUserMaxCapacitiesForAsset(address,address)": FunctionFragment;
     "getUserUnclaimedRewards(address[],address)": FunctionFragment;
     "initialize(address)": FunctionFragment;
+    "isLiquidatable(address,address,address[])": FunctionFragment;
     "isLiquidatable(address,address[])": FunctionFragment;
-    "isMarketCreated(address)": FunctionFragment;
-    "isMarketCreatedAndNotPaused(address)": FunctionFragment;
-    "isMarketCreatedAndNotPausedNorPartiallyPaused(address)": FunctionFragment;
     "morpho()": FunctionFragment;
     "rewardsManager()": FunctionFragment;
   };
@@ -121,6 +148,7 @@ export interface MorphoCompoundLensInterface extends utils.Interface {
       | "getIndexes"
       | "getMainMarketData"
       | "getMarketConfiguration"
+      | "getMarketPauseStatus"
       | "getNextUserBorrowRatePerBlock"
       | "getNextUserSupplyRatePerBlock"
       | "getRatesPerBlock"
@@ -135,10 +163,8 @@ export interface MorphoCompoundLensInterface extends utils.Interface {
       | "getUserMaxCapacitiesForAsset"
       | "getUserUnclaimedRewards"
       | "initialize"
-      | "isLiquidatable"
-      | "isMarketCreated"
-      | "isMarketCreatedAndNotPaused"
-      | "isMarketCreatedAndNotPausedNorPartiallyPaused"
+      | "isLiquidatable(address,address,address[])"
+      | "isLiquidatable(address,address[])"
       | "morpho"
       | "rewardsManager"
   ): FunctionFragment;
@@ -246,6 +272,10 @@ export interface MorphoCompoundLensInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
+    functionFragment: "getMarketPauseStatus",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "getNextUserBorrowRatePerBlock",
     values: [
       PromiseOrValue<string>,
@@ -320,20 +350,16 @@ export interface MorphoCompoundLensInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "isLiquidatable",
+    functionFragment: "isLiquidatable(address,address,address[])",
+    values: [
+      PromiseOrValue<string>,
+      PromiseOrValue<string>,
+      PromiseOrValue<string>[]
+    ]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "isLiquidatable(address,address[])",
     values: [PromiseOrValue<string>, PromiseOrValue<string>[]]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "isMarketCreated",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "isMarketCreatedAndNotPaused",
-    values: [PromiseOrValue<string>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "isMarketCreatedAndNotPausedNorPartiallyPaused",
-    values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(functionFragment: "morpho", values?: undefined): string;
   encodeFunctionData(
@@ -428,6 +454,10 @@ export interface MorphoCompoundLensInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "getMarketPauseStatus",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "getNextUserBorrowRatePerBlock",
     data: BytesLike
   ): Result;
@@ -481,19 +511,11 @@ export interface MorphoCompoundLensInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
   decodeFunctionResult(
-    functionFragment: "isLiquidatable",
+    functionFragment: "isLiquidatable(address,address,address[])",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "isMarketCreated",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "isMarketCreatedAndNotPaused",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "isMarketCreatedAndNotPausedNorPartiallyPaused",
+    functionFragment: "isLiquidatable(address,address[])",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "morpho", data: BytesLike): Result;
@@ -732,6 +754,11 @@ export interface MorphoCompoundLens extends BaseContract {
       }
     >;
 
+    getMarketPauseStatus(
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<[Types.MarketPauseStatusStructOutput]>;
+
     getNextUserBorrowRatePerBlock(
       _poolTokenAddress: PromiseOrValue<string>,
       _user: PromiseOrValue<string>,
@@ -874,24 +901,16 @@ export interface MorphoCompoundLens extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    isLiquidatable(
+    "isLiquidatable(address,address,address[])"(
       _user: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _updatedMarkets: PromiseOrValue<string>[],
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
-    isMarketCreated(
-      _poolTokenAddress: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
-
-    isMarketCreatedAndNotPaused(
-      _poolTokenAddress: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<[boolean]>;
-
-    isMarketCreatedAndNotPausedNorPartiallyPaused(
-      _poolTokenAddress: PromiseOrValue<string>,
+    "isLiquidatable(address,address[])"(
+      _user: PromiseOrValue<string>,
+      _updatedMarkets: PromiseOrValue<string>[],
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
@@ -1089,6 +1108,11 @@ export interface MorphoCompoundLens extends BaseContract {
     }
   >;
 
+  getMarketPauseStatus(
+    _poolToken: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<Types.MarketPauseStatusStructOutput>;
+
   getNextUserBorrowRatePerBlock(
     _poolTokenAddress: PromiseOrValue<string>,
     _user: PromiseOrValue<string>,
@@ -1224,24 +1248,16 @@ export interface MorphoCompoundLens extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  isLiquidatable(
+  "isLiquidatable(address,address,address[])"(
     _user: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _updatedMarkets: PromiseOrValue<string>[],
     overrides?: CallOverrides
   ): Promise<boolean>;
 
-  isMarketCreated(
-    _poolTokenAddress: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  isMarketCreatedAndNotPaused(
-    _poolTokenAddress: PromiseOrValue<string>,
-    overrides?: CallOverrides
-  ): Promise<boolean>;
-
-  isMarketCreatedAndNotPausedNorPartiallyPaused(
-    _poolTokenAddress: PromiseOrValue<string>,
+  "isLiquidatable(address,address[])"(
+    _user: PromiseOrValue<string>,
+    _updatedMarkets: PromiseOrValue<string>[],
     overrides?: CallOverrides
   ): Promise<boolean>;
 
@@ -1448,6 +1464,11 @@ export interface MorphoCompoundLens extends BaseContract {
       }
     >;
 
+    getMarketPauseStatus(
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<Types.MarketPauseStatusStructOutput>;
+
     getNextUserBorrowRatePerBlock(
       _poolTokenAddress: PromiseOrValue<string>,
       _user: PromiseOrValue<string>,
@@ -1586,24 +1607,16 @@ export interface MorphoCompoundLens extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    isLiquidatable(
+    "isLiquidatable(address,address,address[])"(
       _user: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _updatedMarkets: PromiseOrValue<string>[],
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    isMarketCreated(
-      _poolTokenAddress: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    isMarketCreatedAndNotPaused(
-      _poolTokenAddress: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<boolean>;
-
-    isMarketCreatedAndNotPausedNorPartiallyPaused(
-      _poolTokenAddress: PromiseOrValue<string>,
+    "isLiquidatable(address,address[])"(
+      _user: PromiseOrValue<string>,
+      _updatedMarkets: PromiseOrValue<string>[],
       overrides?: CallOverrides
     ): Promise<boolean>;
 
@@ -1730,6 +1743,11 @@ export interface MorphoCompoundLens extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    getMarketPauseStatus(
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     getNextUserBorrowRatePerBlock(
       _poolTokenAddress: PromiseOrValue<string>,
       _user: PromiseOrValue<string>,
@@ -1808,24 +1826,16 @@ export interface MorphoCompoundLens extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    isLiquidatable(
+    "isLiquidatable(address,address,address[])"(
       _user: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _updatedMarkets: PromiseOrValue<string>[],
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    isMarketCreated(
-      _poolTokenAddress: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    isMarketCreatedAndNotPaused(
-      _poolTokenAddress: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    isMarketCreatedAndNotPausedNorPartiallyPaused(
-      _poolTokenAddress: PromiseOrValue<string>,
+    "isLiquidatable(address,address[])"(
+      _user: PromiseOrValue<string>,
+      _updatedMarkets: PromiseOrValue<string>[],
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
@@ -1950,6 +1960,11 @@ export interface MorphoCompoundLens extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    getMarketPauseStatus(
+      _poolToken: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     getNextUserBorrowRatePerBlock(
       _poolTokenAddress: PromiseOrValue<string>,
       _user: PromiseOrValue<string>,
@@ -2028,24 +2043,16 @@ export interface MorphoCompoundLens extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    isLiquidatable(
+    "isLiquidatable(address,address,address[])"(
       _user: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _updatedMarkets: PromiseOrValue<string>[],
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
-    isMarketCreated(
-      _poolTokenAddress: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    isMarketCreatedAndNotPaused(
-      _poolTokenAddress: PromiseOrValue<string>,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    isMarketCreatedAndNotPausedNorPartiallyPaused(
-      _poolTokenAddress: PromiseOrValue<string>,
+    "isLiquidatable(address,address[])"(
+      _user: PromiseOrValue<string>,
+      _updatedMarkets: PromiseOrValue<string>[],
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 

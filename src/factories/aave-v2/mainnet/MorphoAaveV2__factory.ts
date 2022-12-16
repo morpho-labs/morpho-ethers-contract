@@ -1023,6 +1023,32 @@ const _abi = [
   },
   {
     inputs: [],
+    name: "ST_ETH",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "ST_ETH_BASE_REBASE_INDEX",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "VARIABLE_INTEREST_MODE",
     outputs: [
       {
@@ -1776,19 +1802,6 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "bool",
-        name: "_newStatus",
-        type: "bool",
-      },
-    ],
-    name: "setClaimRewardsPauseStatus",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         components: [
           {
             internalType: "uint64",
@@ -2064,79 +2077,12 @@ const _abi = [
         type: "address",
       },
       {
-        internalType: "bool",
-        name: "_newStatus",
-        type: "bool",
-      },
-    ],
-    name: "setP2PDisabledStatus",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_poolToken",
-        type: "address",
-      },
-      {
         internalType: "uint16",
         name: "_p2pIndexCursor",
         type: "uint16",
       },
     ],
     name: "setP2PIndexCursor",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_poolToken",
-        type: "address",
-      },
-      {
-        internalType: "bool",
-        name: "_newStatus",
-        type: "bool",
-      },
-    ],
-    name: "setPartialPauseStatus",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_poolToken",
-        type: "address",
-      },
-      {
-        internalType: "bool",
-        name: "_newStatus",
-        type: "bool",
-      },
-    ],
-    name: "setPauseStatus",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "bool",
-        name: "_newStatus",
-        type: "bool",
-      },
-    ],
-    name: "setPauseStatusForAllMarkets",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

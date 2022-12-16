@@ -230,6 +230,32 @@ const _abi = [
   },
   {
     inputs: [],
+    name: "ST_ETH",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "ST_ETH_BASE_REBASE_INDEX",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "addressesProvider",
     outputs: [
       {
@@ -250,12 +276,12 @@ const _abi = [
       },
       {
         internalType: "address",
-        name: "_poolTokenBorrowedAddress",
+        name: "_poolTokenBorrowed",
         type: "address",
       },
       {
         internalType: "address",
-        name: "_poolTokenCollateralAddress",
+        name: "_poolTokenCollateral",
         type: "address",
       },
     ],
@@ -705,6 +731,62 @@ const _abi = [
         internalType: "uint256",
         name: "decimals",
         type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+    ],
+    name: "getMarketPauseStatus",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "bool",
+            name: "isSupplyPaused",
+            type: "bool",
+          },
+          {
+            internalType: "bool",
+            name: "isBorrowPaused",
+            type: "bool",
+          },
+          {
+            internalType: "bool",
+            name: "isWithdrawPaused",
+            type: "bool",
+          },
+          {
+            internalType: "bool",
+            name: "isRepayPaused",
+            type: "bool",
+          },
+          {
+            internalType: "bool",
+            name: "isLiquidateCollateralPaused",
+            type: "bool",
+          },
+          {
+            internalType: "bool",
+            name: "isLiquidateBorrowPaused",
+            type: "bool",
+          },
+          {
+            internalType: "bool",
+            name: "isDeprecated",
+            type: "bool",
+          },
+        ],
+        internalType: "struct Types.MarketPauseStatus",
+        name: "",
+        type: "tuple",
       },
     ],
     stateMutability: "view",
@@ -1194,49 +1276,35 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
+        name: "_user",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_poolToken",
+        type: "address",
+      },
+    ],
+    name: "isLiquidatable",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
         name: "_poolToken",
         type: "address",
       },
     ],
     name: "isMarketCreated",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_poolToken",
-        type: "address",
-      },
-    ],
-    name: "isMarketCreatedAndNotPaused",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_poolToken",
-        type: "address",
-      },
-    ],
-    name: "isMarketCreatedAndNotPausedNorPartiallyPaused",
     outputs: [
       {
         internalType: "bool",
