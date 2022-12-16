@@ -82,6 +82,7 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     "isClaimRewardsPaused()": FunctionFragment;
     "liquidate(address,address,address,uint256)": FunctionFragment;
     "market(address)": FunctionFragment;
+    "marketPauseStatus(address)": FunctionFragment;
     "maxSortedUsers()": FunctionFragment;
     "owner()": FunctionFragment;
     "p2pBorrowIndex(address)": FunctionFragment;
@@ -99,6 +100,16 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     "setExitPositionsManager(address)": FunctionFragment;
     "setIncentivesVault(address)": FunctionFragment;
     "setInterestRatesManager(address)": FunctionFragment;
+    "setIsBorrowPaused(address,bool)": FunctionFragment;
+    "setIsClaimRewardsPaused(bool)": FunctionFragment;
+    "setIsDeprecated(address,bool)": FunctionFragment;
+    "setIsLiquidateBorrowPaused(address,bool)": FunctionFragment;
+    "setIsLiquidateCollateralPaused(address,bool)": FunctionFragment;
+    "setIsP2PDisabled(address,bool)": FunctionFragment;
+    "setIsPausedForAllMarkets(bool)": FunctionFragment;
+    "setIsRepayPaused(address,bool)": FunctionFragment;
+    "setIsSupplyPaused(address,bool)": FunctionFragment;
+    "setIsWithdrawPaused(address,bool)": FunctionFragment;
     "setMaxSortedUsers(uint256)": FunctionFragment;
     "setP2PDisabledStatus(address,bool)": FunctionFragment;
     "setP2PIndexCursor(address,uint16)": FunctionFragment;
@@ -150,6 +161,7 @@ export interface MorphoAaveV2Interface extends utils.Interface {
       | "isClaimRewardsPaused"
       | "liquidate"
       | "market"
+      | "marketPauseStatus"
       | "maxSortedUsers"
       | "owner"
       | "p2pBorrowIndex"
@@ -167,6 +179,16 @@ export interface MorphoAaveV2Interface extends utils.Interface {
       | "setExitPositionsManager"
       | "setIncentivesVault"
       | "setInterestRatesManager"
+      | "setIsBorrowPaused"
+      | "setIsClaimRewardsPaused"
+      | "setIsDeprecated"
+      | "setIsLiquidateBorrowPaused"
+      | "setIsLiquidateCollateralPaused"
+      | "setIsP2PDisabled"
+      | "setIsPausedForAllMarkets"
+      | "setIsRepayPaused"
+      | "setIsSupplyPaused"
+      | "setIsWithdrawPaused"
       | "setMaxSortedUsers"
       | "setP2PDisabledStatus"
       | "setP2PIndexCursor"
@@ -328,6 +350,10 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
+    functionFragment: "marketPauseStatus",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "maxSortedUsers",
     values?: undefined
   ): string;
@@ -392,6 +418,46 @@ export interface MorphoAaveV2Interface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "setInterestRatesManager",
     values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsBorrowPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsClaimRewardsPaused",
+    values: [PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsDeprecated",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsLiquidateBorrowPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsLiquidateCollateralPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsP2PDisabled",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsPausedForAllMarkets",
+    values: [PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsRepayPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsSupplyPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsWithdrawPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
   ): string;
   encodeFunctionData(
     functionFragment: "setMaxSortedUsers",
@@ -568,6 +634,10 @@ export interface MorphoAaveV2Interface extends utils.Interface {
   decodeFunctionResult(functionFragment: "liquidate", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "market", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "marketPauseStatus",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "maxSortedUsers",
     data: BytesLike
   ): Result;
@@ -624,6 +694,46 @@ export interface MorphoAaveV2Interface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setInterestRatesManager",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsBorrowPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsClaimRewardsPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsDeprecated",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsLiquidateBorrowPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsLiquidateCollateralPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsP2PDisabled",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsPausedForAllMarkets",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsRepayPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsSupplyPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsWithdrawPaused",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -711,6 +821,13 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     "ExitPositionsManagerSet(address)": EventFragment;
     "IncentivesVaultSet(address)": EventFragment;
     "InterestRatesSet(address)": EventFragment;
+    "IsBorrowPausedSet(address,bool)": EventFragment;
+    "IsDeprecatedSet(address,bool)": EventFragment;
+    "IsLiquidateBorrowPausedSet(address,bool)": EventFragment;
+    "IsLiquidateCollateralPausedSet(address,bool)": EventFragment;
+    "IsRepayPausedSet(address,bool)": EventFragment;
+    "IsSupplyPausedSet(address,bool)": EventFragment;
+    "IsWithdrawPausedSet(address,bool)": EventFragment;
     "MarketCreated(address,uint16,uint16)": EventFragment;
     "MaxSortedUsersSet(uint256)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
@@ -747,6 +864,15 @@ export interface MorphoAaveV2Interface extends utils.Interface {
   getEvent(nameOrSignatureOrTopic: "ExitPositionsManagerSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "IncentivesVaultSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "InterestRatesSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsBorrowPausedSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsDeprecatedSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsLiquidateBorrowPausedSet"): EventFragment;
+  getEvent(
+    nameOrSignatureOrTopic: "IsLiquidateCollateralPausedSet"
+  ): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsRepayPausedSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsSupplyPausedSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsWithdrawPausedSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "MarketCreated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "MaxSortedUsersSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
@@ -991,6 +1117,89 @@ export type InterestRatesSetEvent = TypedEvent<
 
 export type InterestRatesSetEventFilter =
   TypedEventFilter<InterestRatesSetEvent>;
+
+export interface IsBorrowPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsBorrowPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsBorrowPausedSetEventObject
+>;
+
+export type IsBorrowPausedSetEventFilter =
+  TypedEventFilter<IsBorrowPausedSetEvent>;
+
+export interface IsDeprecatedSetEventObject {
+  _poolToken: string;
+  _isDeprecated: boolean;
+}
+export type IsDeprecatedSetEvent = TypedEvent<
+  [string, boolean],
+  IsDeprecatedSetEventObject
+>;
+
+export type IsDeprecatedSetEventFilter = TypedEventFilter<IsDeprecatedSetEvent>;
+
+export interface IsLiquidateBorrowPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsLiquidateBorrowPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsLiquidateBorrowPausedSetEventObject
+>;
+
+export type IsLiquidateBorrowPausedSetEventFilter =
+  TypedEventFilter<IsLiquidateBorrowPausedSetEvent>;
+
+export interface IsLiquidateCollateralPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsLiquidateCollateralPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsLiquidateCollateralPausedSetEventObject
+>;
+
+export type IsLiquidateCollateralPausedSetEventFilter =
+  TypedEventFilter<IsLiquidateCollateralPausedSetEvent>;
+
+export interface IsRepayPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsRepayPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsRepayPausedSetEventObject
+>;
+
+export type IsRepayPausedSetEventFilter =
+  TypedEventFilter<IsRepayPausedSetEvent>;
+
+export interface IsSupplyPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsSupplyPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsSupplyPausedSetEventObject
+>;
+
+export type IsSupplyPausedSetEventFilter =
+  TypedEventFilter<IsSupplyPausedSetEvent>;
+
+export interface IsWithdrawPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsWithdrawPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsWithdrawPausedSetEventObject
+>;
+
+export type IsWithdrawPausedSetEventFilter =
+  TypedEventFilter<IsWithdrawPausedSetEvent>;
 
 export interface MarketCreatedEventObject {
   _poolToken: string;
@@ -1308,6 +1517,21 @@ export interface MorphoAaveV2 extends BaseContract {
       }
     >;
 
+    marketPauseStatus(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<
+      [boolean, boolean, boolean, boolean, boolean, boolean, boolean] & {
+        isSupplyPaused: boolean;
+        isBorrowPaused: boolean;
+        isWithdrawPaused: boolean;
+        isRepayPaused: boolean;
+        isLiquidateCollateralPaused: boolean;
+        isLiquidateBorrowPaused: boolean;
+        isDeprecated: boolean;
+      }
+    >;
+
     maxSortedUsers(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     owner(overrides?: CallOverrides): Promise<[string]>;
@@ -1386,6 +1610,64 @@ export interface MorphoAaveV2 extends BaseContract {
 
     setInterestRatesManager(
       _interestRatesManager: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsClaimRewardsPaused(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsDeprecated(
+      _poolToken: PromiseOrValue<string>,
+      _isDeprecated: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsLiquidateBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsLiquidateCollateralPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsP2PDisabled(
+      _poolToken: PromiseOrValue<string>,
+      _isP2PDisabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsPausedForAllMarkets(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsRepayPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsSupplyPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsWithdrawPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -1634,6 +1916,21 @@ export interface MorphoAaveV2 extends BaseContract {
     }
   >;
 
+  marketPauseStatus(
+    arg0: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<
+    [boolean, boolean, boolean, boolean, boolean, boolean, boolean] & {
+      isSupplyPaused: boolean;
+      isBorrowPaused: boolean;
+      isWithdrawPaused: boolean;
+      isRepayPaused: boolean;
+      isLiquidateCollateralPaused: boolean;
+      isLiquidateBorrowPaused: boolean;
+      isDeprecated: boolean;
+    }
+  >;
+
   maxSortedUsers(overrides?: CallOverrides): Promise<BigNumber>;
 
   owner(overrides?: CallOverrides): Promise<string>;
@@ -1712,6 +2009,64 @@ export interface MorphoAaveV2 extends BaseContract {
 
   setInterestRatesManager(
     _interestRatesManager: PromiseOrValue<string>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsBorrowPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsClaimRewardsPaused(
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsDeprecated(
+    _poolToken: PromiseOrValue<string>,
+    _isDeprecated: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsLiquidateBorrowPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsLiquidateCollateralPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsP2PDisabled(
+    _poolToken: PromiseOrValue<string>,
+    _isP2PDisabled: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsPausedForAllMarkets(
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsRepayPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsSupplyPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsWithdrawPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -1960,6 +2315,21 @@ export interface MorphoAaveV2 extends BaseContract {
       }
     >;
 
+    marketPauseStatus(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<
+      [boolean, boolean, boolean, boolean, boolean, boolean, boolean] & {
+        isSupplyPaused: boolean;
+        isBorrowPaused: boolean;
+        isWithdrawPaused: boolean;
+        isRepayPaused: boolean;
+        isLiquidateCollateralPaused: boolean;
+        isLiquidateBorrowPaused: boolean;
+        isDeprecated: boolean;
+      }
+    >;
+
     maxSortedUsers(overrides?: CallOverrides): Promise<BigNumber>;
 
     owner(overrides?: CallOverrides): Promise<string>;
@@ -2036,6 +2406,64 @@ export interface MorphoAaveV2 extends BaseContract {
 
     setInterestRatesManager(
       _interestRatesManager: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsClaimRewardsPaused(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsDeprecated(
+      _poolToken: PromiseOrValue<string>,
+      _isDeprecated: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsLiquidateBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsLiquidateCollateralPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsP2PDisabled(
+      _poolToken: PromiseOrValue<string>,
+      _isP2PDisabled: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsPausedForAllMarkets(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsRepayPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsSupplyPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsWithdrawPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -2339,6 +2767,69 @@ export interface MorphoAaveV2 extends BaseContract {
       _interestRatesManager?: PromiseOrValue<string> | null
     ): InterestRatesSetEventFilter;
 
+    "IsBorrowPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsBorrowPausedSetEventFilter;
+    IsBorrowPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsBorrowPausedSetEventFilter;
+
+    "IsDeprecatedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isDeprecated?: null
+    ): IsDeprecatedSetEventFilter;
+    IsDeprecatedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isDeprecated?: null
+    ): IsDeprecatedSetEventFilter;
+
+    "IsLiquidateBorrowPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsLiquidateBorrowPausedSetEventFilter;
+    IsLiquidateBorrowPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsLiquidateBorrowPausedSetEventFilter;
+
+    "IsLiquidateCollateralPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsLiquidateCollateralPausedSetEventFilter;
+    IsLiquidateCollateralPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsLiquidateCollateralPausedSetEventFilter;
+
+    "IsRepayPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsRepayPausedSetEventFilter;
+    IsRepayPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsRepayPausedSetEventFilter;
+
+    "IsSupplyPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsSupplyPausedSetEventFilter;
+    IsSupplyPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsSupplyPausedSetEventFilter;
+
+    "IsWithdrawPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsWithdrawPausedSetEventFilter;
+    IsWithdrawPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsWithdrawPausedSetEventFilter;
+
     "MarketCreated(address,uint16,uint16)"(
       _poolToken?: PromiseOrValue<string> | null,
       _reserveFactor?: null,
@@ -2567,6 +3058,11 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    marketPauseStatus(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     maxSortedUsers(overrides?: CallOverrides): Promise<BigNumber>;
 
     owner(overrides?: CallOverrides): Promise<BigNumber>;
@@ -2639,6 +3135,64 @@ export interface MorphoAaveV2 extends BaseContract {
 
     setInterestRatesManager(
       _interestRatesManager: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsClaimRewardsPaused(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsDeprecated(
+      _poolToken: PromiseOrValue<string>,
+      _isDeprecated: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsLiquidateBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsLiquidateCollateralPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsP2PDisabled(
+      _poolToken: PromiseOrValue<string>,
+      _isP2PDisabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsPausedForAllMarkets(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsRepayPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsSupplyPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsWithdrawPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -2874,6 +3428,11 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    marketPauseStatus(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     maxSortedUsers(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -2946,6 +3505,64 @@ export interface MorphoAaveV2 extends BaseContract {
 
     setInterestRatesManager(
       _interestRatesManager: PromiseOrValue<string>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsClaimRewardsPaused(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsDeprecated(
+      _poolToken: PromiseOrValue<string>,
+      _isDeprecated: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsLiquidateBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsLiquidateCollateralPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsP2PDisabled(
+      _poolToken: PromiseOrValue<string>,
+      _isP2PDisabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsPausedForAllMarkets(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsRepayPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsSupplyPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsWithdrawPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

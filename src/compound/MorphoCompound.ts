@@ -90,6 +90,7 @@ export interface MorphoCompoundInterface extends utils.Interface {
     "liquidate(address,address,address,uint256)": FunctionFragment;
     "marketParameters(address)": FunctionFragment;
     "marketStatus(address)": FunctionFragment;
+    "marketPauseStatus(address)": FunctionFragment;
     "marketsCreated(uint256)": FunctionFragment;
     "maxSortedUsers()": FunctionFragment;
     "owner()": FunctionFragment;
@@ -104,6 +105,16 @@ export interface MorphoCompoundInterface extends utils.Interface {
     "setDustThreshold(uint256)": FunctionFragment;
     "setIncentivesVault(address)": FunctionFragment;
     "setInterestRates(address)": FunctionFragment;
+    "setIsBorrowPaused(address,bool)": FunctionFragment;
+    "setIsClaimRewardsPaused(bool)": FunctionFragment;
+    "setIsDeprecated(address,bool)": FunctionFragment;
+    "setIsLiquidateBorrowPaused(address,bool)": FunctionFragment;
+    "setIsLiquidateCollateralPaused(address,bool)": FunctionFragment;
+    "setIsP2PDisabled(address,bool)": FunctionFragment;
+    "setIsPausedForAllMarkets(bool)": FunctionFragment;
+    "setIsRepayPaused(address,bool)": FunctionFragment;
+    "setIsSupplyPaused(address,bool)": FunctionFragment;
+    "setIsWithdrawPaused(address,bool)": FunctionFragment;
     "setMaxSortedUsers(uint256)": FunctionFragment;
     "setP2PDisable(address,bool)": FunctionFragment;
     "setP2PIndexCursor(address,uint16)": FunctionFragment;
@@ -154,6 +165,7 @@ export interface MorphoCompoundInterface extends utils.Interface {
       | "liquidate"
       | "marketParameters"
       | "marketStatus"
+      | "marketPauseStatus"
       | "marketsCreated"
       | "maxSortedUsers"
       | "owner"
@@ -168,6 +180,16 @@ export interface MorphoCompoundInterface extends utils.Interface {
       | "setDustThreshold"
       | "setIncentivesVault"
       | "setInterestRates"
+      | "setIsBorrowPaused"
+      | "setIsClaimRewardsPaused"
+      | "setIsDeprecated"
+      | "setIsLiquidateBorrowPaused"
+      | "setIsLiquidateCollateralPaused"
+      | "setIsP2PDisabled"
+      | "setIsPausedForAllMarkets"
+      | "setIsRepayPaused"
+      | "setIsSupplyPaused"
+      | "setIsWithdrawPaused"
       | "setMaxSortedUsers"
       | "setP2PDisable"
       | "setP2PIndexCursor"
@@ -317,6 +339,10 @@ export interface MorphoCompoundInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
+    functionFragment: "marketPauseStatus",
+    values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
     functionFragment: "marketsCreated",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
@@ -372,6 +398,46 @@ export interface MorphoCompoundInterface extends utils.Interface {
   encodeFunctionData(
     functionFragment: "setInterestRates",
     values: [PromiseOrValue<string>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsBorrowPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsClaimRewardsPaused",
+    values: [PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsDeprecated",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsLiquidateBorrowPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsLiquidateCollateralPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsP2PDisabled",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsPausedForAllMarkets",
+    values: [PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsRepayPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsSupplyPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "setIsWithdrawPaused",
+    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
   ): string;
   encodeFunctionData(
     functionFragment: "setMaxSortedUsers",
@@ -544,6 +610,10 @@ export interface MorphoCompoundInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
+    functionFragment: "marketPauseStatus",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "marketsCreated",
     data: BytesLike
   ): Result;
@@ -591,6 +661,46 @@ export interface MorphoCompoundInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(
     functionFragment: "setInterestRates",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsBorrowPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsClaimRewardsPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsDeprecated",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsLiquidateBorrowPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsLiquidateCollateralPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsP2PDisabled",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsPausedForAllMarkets",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsRepayPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsSupplyPaused",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "setIsWithdrawPaused",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -676,6 +786,13 @@ export interface MorphoCompoundInterface extends utils.Interface {
     "DustThresholdSet(uint256)": EventFragment;
     "IncentivesVaultSet(address)": EventFragment;
     "InterestRatesSet(address)": EventFragment;
+    "IsBorrowPausedSet(address,bool)": EventFragment;
+    "IsDeprecatedSet(address,bool)": EventFragment;
+    "IsLiquidateBorrowPausedSet(address,bool)": EventFragment;
+    "IsLiquidateCollateralPausedSet(address,bool)": EventFragment;
+    "IsRepayPausedSet(address,bool)": EventFragment;
+    "IsSupplyPausedSet(address,bool)": EventFragment;
+    "IsWithdrawPausedSet(address,bool)": EventFragment;
     "MarketCreated(address,uint16,uint16)": EventFragment;
     "MaxSortedUsersSet(uint256)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
@@ -709,6 +826,15 @@ export interface MorphoCompoundInterface extends utils.Interface {
   getEvent(nameOrSignatureOrTopic: "DustThresholdSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "IncentivesVaultSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "InterestRatesSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsBorrowPausedSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsDeprecatedSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsLiquidateBorrowPausedSet"): EventFragment;
+  getEvent(
+    nameOrSignatureOrTopic: "IsLiquidateCollateralPausedSet"
+  ): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsRepayPausedSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsSupplyPausedSet"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "IsWithdrawPausedSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "MarketCreated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "MaxSortedUsersSet"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
@@ -726,7 +852,7 @@ export interface MorphoCompoundInterface extends utils.Interface {
 }
 
 export interface P2PIndexesUpdatedEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _p2pSupplyIndex: BigNumber;
   _p2pBorrowIndex: BigNumber;
   _poolSupplyIndex: BigNumber;
@@ -742,7 +868,7 @@ export type P2PIndexesUpdatedEventFilter =
 
 export interface BorrowedEventObject {
   _borrower: string;
-  _poolTokenAddress: string;
+  _poolToken: string;
   _amount: BigNumber;
   _balanceOnPool: BigNumber;
   _balanceInP2P: BigNumber;
@@ -756,7 +882,7 @@ export type BorrowedEventFilter = TypedEventFilter<BorrowedEvent>;
 
 export interface BorrowerPositionUpdatedEventObject {
   _user: string;
-  _poolTokenAddress: string;
+  _poolToken: string;
   _balanceOnPool: BigNumber;
   _balanceInP2P: BigNumber;
 }
@@ -784,7 +910,7 @@ export type LiquidatedEvent = TypedEvent<
 export type LiquidatedEventFilter = TypedEventFilter<LiquidatedEvent>;
 
 export interface P2PAmountsUpdatedEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _p2pSupplyAmount: BigNumber;
   _p2pBorrowAmount: BigNumber;
 }
@@ -797,7 +923,7 @@ export type P2PAmountsUpdatedEventFilter =
   TypedEventFilter<P2PAmountsUpdatedEvent>;
 
 export interface P2PBorrowDeltaUpdatedEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _p2pBorrowDelta: BigNumber;
 }
 export type P2PBorrowDeltaUpdatedEvent = TypedEvent<
@@ -809,7 +935,7 @@ export type P2PBorrowDeltaUpdatedEventFilter =
   TypedEventFilter<P2PBorrowDeltaUpdatedEvent>;
 
 export interface P2PSupplyDeltaUpdatedEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _p2pSupplyDelta: BigNumber;
 }
 export type P2PSupplyDeltaUpdatedEvent = TypedEvent<
@@ -823,7 +949,7 @@ export type P2PSupplyDeltaUpdatedEventFilter =
 export interface RepaidEventObject {
   _repayer: string;
   _onBehalf: string;
-  _poolTokenAddress: string;
+  _poolToken: string;
   _amount: BigNumber;
   _balanceOnPool: BigNumber;
   _balanceInP2P: BigNumber;
@@ -838,7 +964,7 @@ export type RepaidEventFilter = TypedEventFilter<RepaidEvent>;
 export interface SuppliedEventObject {
   _supplier: string;
   _onBehalf: string;
-  _poolTokenAddress: string;
+  _poolToken: string;
   _amount: BigNumber;
   _balanceOnPool: BigNumber;
   _balanceInP2P: BigNumber;
@@ -852,7 +978,7 @@ export type SuppliedEventFilter = TypedEventFilter<SuppliedEvent>;
 
 export interface SupplierPositionUpdatedEventObject {
   _user: string;
-  _poolTokenAddress: string;
+  _poolToken: string;
   _balanceOnPool: BigNumber;
   _balanceInP2P: BigNumber;
 }
@@ -867,7 +993,7 @@ export type SupplierPositionUpdatedEventFilter =
 export interface WithdrawnEventObject {
   _supplier: string;
   _receiver: string;
-  _poolTokenAddress: string;
+  _poolToken: string;
   _amount: BigNumber;
   _balanceOnPool: BigNumber;
   _balanceInP2P: BigNumber;
@@ -923,8 +1049,91 @@ export type InterestRatesSetEvent = TypedEvent<
 export type InterestRatesSetEventFilter =
   TypedEventFilter<InterestRatesSetEvent>;
 
+export interface IsBorrowPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsBorrowPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsBorrowPausedSetEventObject
+>;
+
+export type IsBorrowPausedSetEventFilter =
+  TypedEventFilter<IsBorrowPausedSetEvent>;
+
+export interface IsDeprecatedSetEventObject {
+  _poolToken: string;
+  _isDeprecated: boolean;
+}
+export type IsDeprecatedSetEvent = TypedEvent<
+  [string, boolean],
+  IsDeprecatedSetEventObject
+>;
+
+export type IsDeprecatedSetEventFilter = TypedEventFilter<IsDeprecatedSetEvent>;
+
+export interface IsLiquidateBorrowPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsLiquidateBorrowPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsLiquidateBorrowPausedSetEventObject
+>;
+
+export type IsLiquidateBorrowPausedSetEventFilter =
+  TypedEventFilter<IsLiquidateBorrowPausedSetEvent>;
+
+export interface IsLiquidateCollateralPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsLiquidateCollateralPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsLiquidateCollateralPausedSetEventObject
+>;
+
+export type IsLiquidateCollateralPausedSetEventFilter =
+  TypedEventFilter<IsLiquidateCollateralPausedSetEvent>;
+
+export interface IsRepayPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsRepayPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsRepayPausedSetEventObject
+>;
+
+export type IsRepayPausedSetEventFilter =
+  TypedEventFilter<IsRepayPausedSetEvent>;
+
+export interface IsSupplyPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsSupplyPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsSupplyPausedSetEventObject
+>;
+
+export type IsSupplyPausedSetEventFilter =
+  TypedEventFilter<IsSupplyPausedSetEvent>;
+
+export interface IsWithdrawPausedSetEventObject {
+  _poolToken: string;
+  _isPaused: boolean;
+}
+export type IsWithdrawPausedSetEvent = TypedEvent<
+  [string, boolean],
+  IsWithdrawPausedSetEventObject
+>;
+
+export type IsWithdrawPausedSetEventFilter =
+  TypedEventFilter<IsWithdrawPausedSetEvent>;
+
 export interface MarketCreatedEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _reserveFactor: number;
   _p2pIndexCursor: number;
 }
@@ -959,7 +1168,7 @@ export type OwnershipTransferredEventFilter =
   TypedEventFilter<OwnershipTransferredEvent>;
 
 export interface P2PIndexCursorSetEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _newValue: number;
 }
 export type P2PIndexCursorSetEvent = TypedEvent<
@@ -971,8 +1180,8 @@ export type P2PIndexCursorSetEventFilter =
   TypedEventFilter<P2PIndexCursorSetEvent>;
 
 export interface P2PStatusSetEventObject {
-  _poolTokenAddress: string;
-  _p2pDisabled: boolean;
+  _poolToken: string;
+  _isP2PDisabled: boolean;
 }
 export type P2PStatusSetEvent = TypedEvent<
   [string, boolean],
@@ -982,7 +1191,7 @@ export type P2PStatusSetEvent = TypedEvent<
 export type P2PStatusSetEventFilter = TypedEventFilter<P2PStatusSetEvent>;
 
 export interface PartialPauseStatusSetEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _newStatus: boolean;
 }
 export type PartialPauseStatusSetEvent = TypedEvent<
@@ -994,7 +1203,7 @@ export type PartialPauseStatusSetEventFilter =
   TypedEventFilter<PartialPauseStatusSetEvent>;
 
 export interface PauseStatusSetEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _newStatus: boolean;
 }
 export type PauseStatusSetEvent = TypedEvent<
@@ -1016,7 +1225,7 @@ export type PositionsManagerSetEventFilter =
   TypedEventFilter<PositionsManagerSetEvent>;
 
 export interface ReserveFactorSetEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _newValue: number;
 }
 export type ReserveFactorSetEvent = TypedEvent<
@@ -1028,7 +1237,7 @@ export type ReserveFactorSetEventFilter =
   TypedEventFilter<ReserveFactorSetEvent>;
 
 export interface ReserveFeeClaimedEventObject {
-  _poolTokenAddress: string;
+  _poolToken: string;
   _amountClaimed: BigNumber;
 }
 export type ReserveFeeClaimedEvent = TypedEvent<
@@ -1120,13 +1329,13 @@ export interface MorphoCompound extends BaseContract {
     WAD(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     "borrow(address,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
     "borrow(address,uint256,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       _maxGasForMatching: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1149,7 +1358,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<ContractTransaction>;
 
     claimToTreasury(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -1157,7 +1366,7 @@ export interface MorphoCompound extends BaseContract {
     comptroller(overrides?: CallOverrides): Promise<[string]>;
 
     createMarket(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _marketParams: Types.MarketParametersStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -1203,13 +1412,13 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<[string[]] & { enteredMarkets_: string[] }>;
 
     getHead(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _positionType: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[string] & { head: string }>;
 
     getNext(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _positionType: PromiseOrValue<BigNumberish>,
       _user: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -1273,6 +1482,21 @@ export interface MorphoCompound extends BaseContract {
       }
     >;
 
+    marketPauseStatus(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<
+      [boolean, boolean, boolean, boolean, boolean, boolean, boolean] & {
+        isSupplyPaused: boolean;
+        isBorrowPaused: boolean;
+        isWithdrawPaused: boolean;
+        isRepayPaused: boolean;
+        isLiquidateCollateralPaused: boolean;
+        isLiquidateBorrowPaused: boolean;
+        isDeprecated: boolean;
+      }
+    >;
+
     marketsCreated(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1304,7 +1528,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<ContractTransaction>;
 
     repay(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1332,31 +1556,89 @@ export interface MorphoCompound extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    setIsBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsClaimRewardsPaused(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsDeprecated(
+      _poolToken: PromiseOrValue<string>,
+      _isDeprecated: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsLiquidateBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsLiquidateCollateralPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsP2PDisabled(
+      _poolToken: PromiseOrValue<string>,
+      _isP2PDisabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsPausedForAllMarkets(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsRepayPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsSupplyPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
+    setIsWithdrawPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<ContractTransaction>;
+
     setMaxSortedUsers(
       _newMaxSortedUsers: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
     setP2PDisable(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
     setP2PIndexCursor(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
     setPartialPauseStatus(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
     setPauseStatus(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -1367,7 +1649,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<ContractTransaction>;
 
     setReserveFactor(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newReserveFactor: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -1383,14 +1665,14 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<ContractTransaction>;
 
     "supply(address,address,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
     "supply(address,address,uint256,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       _maxGasForMatching: PromiseOrValue<BigNumberish>,
@@ -1413,7 +1695,7 @@ export interface MorphoCompound extends BaseContract {
     treasuryVault(overrides?: CallOverrides): Promise<[string]>;
 
     updateP2PIndexes(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -1426,7 +1708,7 @@ export interface MorphoCompound extends BaseContract {
     wEth(overrides?: CallOverrides): Promise<[string]>;
 
     withdraw(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
@@ -1441,13 +1723,13 @@ export interface MorphoCompound extends BaseContract {
   WAD(overrides?: CallOverrides): Promise<BigNumber>;
 
   "borrow(address,uint256)"(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _amount: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   "borrow(address,uint256,uint256)"(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _amount: PromiseOrValue<BigNumberish>,
     _maxGasForMatching: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1468,7 +1750,7 @@ export interface MorphoCompound extends BaseContract {
   ): Promise<ContractTransaction>;
 
   claimToTreasury(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _amount: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -1476,7 +1758,7 @@ export interface MorphoCompound extends BaseContract {
   comptroller(overrides?: CallOverrides): Promise<string>;
 
   createMarket(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _marketParams: Types.MarketParametersStruct,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -1520,13 +1802,13 @@ export interface MorphoCompound extends BaseContract {
   ): Promise<string[]>;
 
   getHead(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _positionType: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<string>;
 
   getNext(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _positionType: PromiseOrValue<BigNumberish>,
     _user: PromiseOrValue<string>,
     overrides?: CallOverrides
@@ -1590,6 +1872,21 @@ export interface MorphoCompound extends BaseContract {
     }
   >;
 
+  marketPauseStatus(
+    arg0: PromiseOrValue<string>,
+    overrides?: CallOverrides
+  ): Promise<
+    [boolean, boolean, boolean, boolean, boolean, boolean, boolean] & {
+      isSupplyPaused: boolean;
+      isBorrowPaused: boolean;
+      isWithdrawPaused: boolean;
+      isRepayPaused: boolean;
+      isLiquidateCollateralPaused: boolean;
+      isLiquidateBorrowPaused: boolean;
+      isDeprecated: boolean;
+    }
+  >;
+
   marketsCreated(
     arg0: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
@@ -1621,7 +1918,7 @@ export interface MorphoCompound extends BaseContract {
   ): Promise<ContractTransaction>;
 
   repay(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _onBehalf: PromiseOrValue<string>,
     _amount: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1649,31 +1946,89 @@ export interface MorphoCompound extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  setIsBorrowPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsClaimRewardsPaused(
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsDeprecated(
+    _poolToken: PromiseOrValue<string>,
+    _isDeprecated: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsLiquidateBorrowPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsLiquidateCollateralPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsP2PDisabled(
+    _poolToken: PromiseOrValue<string>,
+    _isP2PDisabled: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsPausedForAllMarkets(
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsRepayPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsSupplyPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
+  setIsWithdrawPaused(
+    _poolToken: PromiseOrValue<string>,
+    _isPaused: PromiseOrValue<boolean>,
+    overrides?: Overrides & { from?: PromiseOrValue<string> }
+  ): Promise<ContractTransaction>;
+
   setMaxSortedUsers(
     _newMaxSortedUsers: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   setP2PDisable(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _newStatus: PromiseOrValue<boolean>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   setP2PIndexCursor(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _p2pIndexCursor: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   setPartialPauseStatus(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _newStatus: PromiseOrValue<boolean>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   setPauseStatus(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _newStatus: PromiseOrValue<boolean>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -1684,7 +2039,7 @@ export interface MorphoCompound extends BaseContract {
   ): Promise<ContractTransaction>;
 
   setReserveFactor(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _newReserveFactor: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -1700,14 +2055,14 @@ export interface MorphoCompound extends BaseContract {
   ): Promise<ContractTransaction>;
 
   "supply(address,address,uint256)"(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _onBehalf: PromiseOrValue<string>,
     _amount: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
   "supply(address,address,uint256,uint256)"(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _onBehalf: PromiseOrValue<string>,
     _amount: PromiseOrValue<BigNumberish>,
     _maxGasForMatching: PromiseOrValue<BigNumberish>,
@@ -1728,7 +2083,7 @@ export interface MorphoCompound extends BaseContract {
   treasuryVault(overrides?: CallOverrides): Promise<string>;
 
   updateP2PIndexes(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -1741,7 +2096,7 @@ export interface MorphoCompound extends BaseContract {
   wEth(overrides?: CallOverrides): Promise<string>;
 
   withdraw(
-    _poolTokenAddress: PromiseOrValue<string>,
+    _poolToken: PromiseOrValue<string>,
     _amount: PromiseOrValue<BigNumberish>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
@@ -1756,13 +2111,13 @@ export interface MorphoCompound extends BaseContract {
     WAD(overrides?: CallOverrides): Promise<BigNumber>;
 
     "borrow(address,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
 
     "borrow(address,uint256,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       _maxGasForMatching: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1785,7 +2140,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<void>;
 
     claimToTreasury(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1793,7 +2148,7 @@ export interface MorphoCompound extends BaseContract {
     comptroller(overrides?: CallOverrides): Promise<string>;
 
     createMarket(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _marketParams: Types.MarketParametersStruct,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1837,13 +2192,13 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<string[]>;
 
     getHead(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _positionType: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<string>;
 
     getNext(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _positionType: PromiseOrValue<BigNumberish>,
       _user: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -1907,6 +2262,21 @@ export interface MorphoCompound extends BaseContract {
       }
     >;
 
+    marketPauseStatus(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<
+      [boolean, boolean, boolean, boolean, boolean, boolean, boolean] & {
+        isSupplyPaused: boolean;
+        isBorrowPaused: boolean;
+        isWithdrawPaused: boolean;
+        isRepayPaused: boolean;
+        isLiquidateCollateralPaused: boolean;
+        isLiquidateBorrowPaused: boolean;
+        isDeprecated: boolean;
+      }
+    >;
+
     marketsCreated(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1936,7 +2306,7 @@ export interface MorphoCompound extends BaseContract {
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
     repay(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -1964,31 +2334,89 @@ export interface MorphoCompound extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    setIsBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsClaimRewardsPaused(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsDeprecated(
+      _poolToken: PromiseOrValue<string>,
+      _isDeprecated: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsLiquidateBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsLiquidateCollateralPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsP2PDisabled(
+      _poolToken: PromiseOrValue<string>,
+      _isP2PDisabled: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsPausedForAllMarkets(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsRepayPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsSupplyPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    setIsWithdrawPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     setMaxSortedUsers(
       _newMaxSortedUsers: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
 
     setP2PDisable(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: CallOverrides
     ): Promise<void>;
 
     setP2PIndexCursor(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
 
     setPartialPauseStatus(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: CallOverrides
     ): Promise<void>;
 
     setPauseStatus(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -1999,7 +2427,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<void>;
 
     setReserveFactor(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newReserveFactor: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -2015,14 +2443,14 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<void>;
 
     "supply(address,address,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
 
     "supply(address,address,uint256,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       _maxGasForMatching: PromiseOrValue<BigNumberish>,
@@ -2045,7 +2473,7 @@ export interface MorphoCompound extends BaseContract {
     treasuryVault(overrides?: CallOverrides): Promise<string>;
 
     updateP2PIndexes(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -2058,7 +2486,7 @@ export interface MorphoCompound extends BaseContract {
     wEth(overrides?: CallOverrides): Promise<string>;
 
     withdraw(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<void>;
@@ -2066,14 +2494,14 @@ export interface MorphoCompound extends BaseContract {
 
   filters: {
     "P2PIndexesUpdated(address,uint256,uint256,uint256,uint256)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _p2pSupplyIndex?: null,
       _p2pBorrowIndex?: null,
       _poolSupplyIndex?: null,
       _poolBorrowIndex?: null
     ): P2PIndexesUpdatedEventFilter;
     P2PIndexesUpdated(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _p2pSupplyIndex?: null,
       _p2pBorrowIndex?: null,
       _poolSupplyIndex?: null,
@@ -2082,14 +2510,14 @@ export interface MorphoCompound extends BaseContract {
 
     "Borrowed(address,address,uint256,uint256,uint256)"(
       _borrower?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amount?: null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
     ): BorrowedEventFilter;
     Borrowed(
       _borrower?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amount?: null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
@@ -2097,13 +2525,13 @@ export interface MorphoCompound extends BaseContract {
 
     "BorrowerPositionUpdated(address,address,uint256,uint256)"(
       _user?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
     ): BorrowerPositionUpdatedEventFilter;
     BorrowerPositionUpdated(
       _user?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
     ): BorrowerPositionUpdatedEventFilter;
@@ -2126,38 +2554,38 @@ export interface MorphoCompound extends BaseContract {
     ): LiquidatedEventFilter;
 
     "P2PAmountsUpdated(address,uint256,uint256)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _p2pSupplyAmount?: null,
       _p2pBorrowAmount?: null
     ): P2PAmountsUpdatedEventFilter;
     P2PAmountsUpdated(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _p2pSupplyAmount?: null,
       _p2pBorrowAmount?: null
     ): P2PAmountsUpdatedEventFilter;
 
     "P2PBorrowDeltaUpdated(address,uint256)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _p2pBorrowDelta?: null
     ): P2PBorrowDeltaUpdatedEventFilter;
     P2PBorrowDeltaUpdated(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _p2pBorrowDelta?: null
     ): P2PBorrowDeltaUpdatedEventFilter;
 
     "P2PSupplyDeltaUpdated(address,uint256)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _p2pSupplyDelta?: null
     ): P2PSupplyDeltaUpdatedEventFilter;
     P2PSupplyDeltaUpdated(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _p2pSupplyDelta?: null
     ): P2PSupplyDeltaUpdatedEventFilter;
 
     "Repaid(address,address,address,uint256,uint256,uint256)"(
       _repayer?: PromiseOrValue<string> | null,
       _onBehalf?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amount?: null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
@@ -2165,7 +2593,7 @@ export interface MorphoCompound extends BaseContract {
     Repaid(
       _repayer?: PromiseOrValue<string> | null,
       _onBehalf?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amount?: null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
@@ -2174,7 +2602,7 @@ export interface MorphoCompound extends BaseContract {
     "Supplied(address,address,address,uint256,uint256,uint256)"(
       _supplier?: PromiseOrValue<string> | null,
       _onBehalf?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amount?: null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
@@ -2182,7 +2610,7 @@ export interface MorphoCompound extends BaseContract {
     Supplied(
       _supplier?: PromiseOrValue<string> | null,
       _onBehalf?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amount?: null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
@@ -2190,13 +2618,13 @@ export interface MorphoCompound extends BaseContract {
 
     "SupplierPositionUpdated(address,address,uint256,uint256)"(
       _user?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
     ): SupplierPositionUpdatedEventFilter;
     SupplierPositionUpdated(
       _user?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
     ): SupplierPositionUpdatedEventFilter;
@@ -2204,7 +2632,7 @@ export interface MorphoCompound extends BaseContract {
     "Withdrawn(address,address,address,uint256,uint256,uint256)"(
       _supplier?: PromiseOrValue<string> | null,
       _receiver?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amount?: null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
@@ -2212,7 +2640,7 @@ export interface MorphoCompound extends BaseContract {
     Withdrawn(
       _supplier?: PromiseOrValue<string> | null,
       _receiver?: PromiseOrValue<string> | null,
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amount?: null,
       _balanceOnPool?: null,
       _balanceInP2P?: null
@@ -2244,13 +2672,76 @@ export interface MorphoCompound extends BaseContract {
       _interestRatesManager?: PromiseOrValue<string> | null
     ): InterestRatesSetEventFilter;
 
+    "IsBorrowPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsBorrowPausedSetEventFilter;
+    IsBorrowPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsBorrowPausedSetEventFilter;
+
+    "IsDeprecatedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isDeprecated?: null
+    ): IsDeprecatedSetEventFilter;
+    IsDeprecatedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isDeprecated?: null
+    ): IsDeprecatedSetEventFilter;
+
+    "IsLiquidateBorrowPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsLiquidateBorrowPausedSetEventFilter;
+    IsLiquidateBorrowPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsLiquidateBorrowPausedSetEventFilter;
+
+    "IsLiquidateCollateralPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsLiquidateCollateralPausedSetEventFilter;
+    IsLiquidateCollateralPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsLiquidateCollateralPausedSetEventFilter;
+
+    "IsRepayPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsRepayPausedSetEventFilter;
+    IsRepayPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsRepayPausedSetEventFilter;
+
+    "IsSupplyPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsSupplyPausedSetEventFilter;
+    IsSupplyPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsSupplyPausedSetEventFilter;
+
+    "IsWithdrawPausedSet(address,bool)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsWithdrawPausedSetEventFilter;
+    IsWithdrawPausedSet(
+      _poolToken?: PromiseOrValue<string> | null,
+      _isPaused?: null
+    ): IsWithdrawPausedSetEventFilter;
+
     "MarketCreated(address,uint16,uint16)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _reserveFactor?: null,
       _p2pIndexCursor?: null
     ): MarketCreatedEventFilter;
     MarketCreated(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _reserveFactor?: null,
       _p2pIndexCursor?: null
     ): MarketCreatedEventFilter;
@@ -2270,38 +2761,38 @@ export interface MorphoCompound extends BaseContract {
     ): OwnershipTransferredEventFilter;
 
     "P2PIndexCursorSet(address,uint16)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _newValue?: null
     ): P2PIndexCursorSetEventFilter;
     P2PIndexCursorSet(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _newValue?: null
     ): P2PIndexCursorSetEventFilter;
 
     "P2PStatusSet(address,bool)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
-      _p2pDisabled?: null
+      _poolToken?: PromiseOrValue<string> | null,
+      _isP2PDisabled?: null
     ): P2PStatusSetEventFilter;
     P2PStatusSet(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
-      _p2pDisabled?: null
+      _poolToken?: PromiseOrValue<string> | null,
+      _isP2PDisabled?: null
     ): P2PStatusSetEventFilter;
 
     "PartialPauseStatusSet(address,bool)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _newStatus?: null
     ): PartialPauseStatusSetEventFilter;
     PartialPauseStatusSet(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _newStatus?: null
     ): PartialPauseStatusSetEventFilter;
 
     "PauseStatusSet(address,bool)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _newStatus?: null
     ): PauseStatusSetEventFilter;
     PauseStatusSet(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _newStatus?: null
     ): PauseStatusSetEventFilter;
 
@@ -2313,20 +2804,20 @@ export interface MorphoCompound extends BaseContract {
     ): PositionsManagerSetEventFilter;
 
     "ReserveFactorSet(address,uint16)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _newValue?: null
     ): ReserveFactorSetEventFilter;
     ReserveFactorSet(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _newValue?: null
     ): ReserveFactorSetEventFilter;
 
     "ReserveFeeClaimed(address,uint256)"(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amountClaimed?: null
     ): ReserveFeeClaimedEventFilter;
     ReserveFeeClaimed(
-      _poolTokenAddress?: PromiseOrValue<string> | null,
+      _poolToken?: PromiseOrValue<string> | null,
       _amountClaimed?: null
     ): ReserveFeeClaimedEventFilter;
 
@@ -2373,13 +2864,13 @@ export interface MorphoCompound extends BaseContract {
     WAD(overrides?: CallOverrides): Promise<BigNumber>;
 
     "borrow(address,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     "borrow(address,uint256,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       _maxGasForMatching: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -2400,7 +2891,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<BigNumber>;
 
     claimToTreasury(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -2408,7 +2899,7 @@ export interface MorphoCompound extends BaseContract {
     comptroller(overrides?: CallOverrides): Promise<BigNumber>;
 
     createMarket(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _marketParams: Types.MarketParametersStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -2436,13 +2927,13 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<BigNumber>;
 
     getHead(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _positionType: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     getNext(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _positionType: PromiseOrValue<BigNumberish>,
       _user: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -2492,6 +2983,11 @@ export interface MorphoCompound extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    marketPauseStatus(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     marketsCreated(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -2523,7 +3019,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<BigNumber>;
 
     repay(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -2551,31 +3047,89 @@ export interface MorphoCompound extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    setIsBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsClaimRewardsPaused(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsDeprecated(
+      _poolToken: PromiseOrValue<string>,
+      _isDeprecated: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsLiquidateBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsLiquidateCollateralPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsP2PDisabled(
+      _poolToken: PromiseOrValue<string>,
+      _isP2PDisabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsPausedForAllMarkets(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsRepayPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsSupplyPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
+    setIsWithdrawPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<BigNumber>;
+
     setMaxSortedUsers(
       _newMaxSortedUsers: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     setP2PDisable(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     setP2PIndexCursor(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     setPartialPauseStatus(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     setPauseStatus(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -2586,7 +3140,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<BigNumber>;
 
     setReserveFactor(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newReserveFactor: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -2602,14 +3156,14 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<BigNumber>;
 
     "supply(address,address,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
     "supply(address,address,uint256,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       _maxGasForMatching: PromiseOrValue<BigNumberish>,
@@ -2630,7 +3184,7 @@ export interface MorphoCompound extends BaseContract {
     treasuryVault(overrides?: CallOverrides): Promise<BigNumber>;
 
     updateP2PIndexes(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -2643,7 +3197,7 @@ export interface MorphoCompound extends BaseContract {
     wEth(overrides?: CallOverrides): Promise<BigNumber>;
 
     withdraw(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
@@ -2661,13 +3215,13 @@ export interface MorphoCompound extends BaseContract {
     WAD(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     "borrow(address,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     "borrow(address,uint256,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       _maxGasForMatching: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -2688,7 +3242,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     claimToTreasury(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
@@ -2696,7 +3250,7 @@ export interface MorphoCompound extends BaseContract {
     comptroller(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     createMarket(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _marketParams: Types.MarketParametersStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
@@ -2726,13 +3280,13 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getHead(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _positionType: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     getNext(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _positionType: PromiseOrValue<BigNumberish>,
       _user: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -2784,6 +3338,11 @@ export interface MorphoCompound extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    marketPauseStatus(
+      arg0: PromiseOrValue<string>,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     marketsCreated(
       arg0: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
@@ -2815,7 +3374,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     repay(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -2843,31 +3402,89 @@ export interface MorphoCompound extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
+    setIsBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsClaimRewardsPaused(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsDeprecated(
+      _poolToken: PromiseOrValue<string>,
+      _isDeprecated: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsLiquidateBorrowPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsLiquidateCollateralPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsP2PDisabled(
+      _poolToken: PromiseOrValue<string>,
+      _isP2PDisabled: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsPausedForAllMarkets(
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsRepayPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsSupplyPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
+    setIsWithdrawPaused(
+      _poolToken: PromiseOrValue<string>,
+      _isPaused: PromiseOrValue<boolean>,
+      overrides?: Overrides & { from?: PromiseOrValue<string> }
+    ): Promise<PopulatedTransaction>;
+
     setMaxSortedUsers(
       _newMaxSortedUsers: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     setP2PDisable(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     setP2PIndexCursor(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     setPartialPauseStatus(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     setPauseStatus(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
@@ -2878,7 +3495,7 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     setReserveFactor(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _newReserveFactor: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
@@ -2894,14 +3511,14 @@ export interface MorphoCompound extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     "supply(address,address,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
     "supply(address,address,uint256,uint256)"(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _onBehalf: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       _maxGasForMatching: PromiseOrValue<BigNumberish>,
@@ -2922,7 +3539,7 @@ export interface MorphoCompound extends BaseContract {
     treasuryVault(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     updateP2PIndexes(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -2935,7 +3552,7 @@ export interface MorphoCompound extends BaseContract {
     wEth(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     withdraw(
-      _poolTokenAddress: PromiseOrValue<string>,
+      _poolToken: PromiseOrValue<string>,
       _amount: PromiseOrValue<BigNumberish>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
