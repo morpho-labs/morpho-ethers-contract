@@ -59,6 +59,8 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     "MAX_NB_OF_MARKETS()": FunctionFragment;
     "NO_REFERRAL_CODE()": FunctionFragment;
     "ONE()": FunctionFragment;
+    "ST_ETH()": FunctionFragment;
+    "ST_ETH_BASE_REBASE_INDEX()": FunctionFragment;
     "VARIABLE_INTEREST_MODE()": FunctionFragment;
     "aaveIncentivesController()": FunctionFragment;
     "addressesProvider()": FunctionFragment;
@@ -94,7 +96,6 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     "rewardsManager()": FunctionFragment;
     "setAaveIncentivesController(address)": FunctionFragment;
     "setAssetAsCollateral(address,bool)": FunctionFragment;
-    "setClaimRewardsPauseStatus(bool)": FunctionFragment;
     "setDefaultMaxGasForMatching((uint64,uint64,uint64,uint64))": FunctionFragment;
     "setEntryPositionsManager(address)": FunctionFragment;
     "setExitPositionsManager(address)": FunctionFragment;
@@ -111,11 +112,7 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     "setIsSupplyPaused(address,bool)": FunctionFragment;
     "setIsWithdrawPaused(address,bool)": FunctionFragment;
     "setMaxSortedUsers(uint256)": FunctionFragment;
-    "setP2PDisabledStatus(address,bool)": FunctionFragment;
     "setP2PIndexCursor(address,uint16)": FunctionFragment;
-    "setPartialPauseStatus(address,bool)": FunctionFragment;
-    "setPauseStatus(address,bool)": FunctionFragment;
-    "setPauseStatusForAllMarkets(bool)": FunctionFragment;
     "setReserveFactor(address,uint16)": FunctionFragment;
     "setRewardsManager(address)": FunctionFragment;
     "setTreasuryVault(address)": FunctionFragment;
@@ -138,6 +135,8 @@ export interface MorphoAaveV2Interface extends utils.Interface {
       | "MAX_NB_OF_MARKETS"
       | "NO_REFERRAL_CODE"
       | "ONE"
+      | "ST_ETH"
+      | "ST_ETH_BASE_REBASE_INDEX"
       | "VARIABLE_INTEREST_MODE"
       | "aaveIncentivesController"
       | "addressesProvider"
@@ -173,7 +172,6 @@ export interface MorphoAaveV2Interface extends utils.Interface {
       | "rewardsManager"
       | "setAaveIncentivesController"
       | "setAssetAsCollateral"
-      | "setClaimRewardsPauseStatus"
       | "setDefaultMaxGasForMatching"
       | "setEntryPositionsManager"
       | "setExitPositionsManager"
@@ -190,11 +188,7 @@ export interface MorphoAaveV2Interface extends utils.Interface {
       | "setIsSupplyPaused"
       | "setIsWithdrawPaused"
       | "setMaxSortedUsers"
-      | "setP2PDisabledStatus"
       | "setP2PIndexCursor"
-      | "setPartialPauseStatus"
-      | "setPauseStatus"
-      | "setPauseStatusForAllMarkets"
       | "setReserveFactor"
       | "setRewardsManager"
       | "setTreasuryVault"
@@ -233,6 +227,11 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "ONE", values?: undefined): string;
+  encodeFunctionData(functionFragment: "ST_ETH", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "ST_ETH_BASE_REBASE_INDEX",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "VARIABLE_INTEREST_MODE",
     values?: undefined
@@ -396,10 +395,6 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
   ): string;
   encodeFunctionData(
-    functionFragment: "setClaimRewardsPauseStatus",
-    values: [PromiseOrValue<boolean>]
-  ): string;
-  encodeFunctionData(
     functionFragment: "setDefaultMaxGasForMatching",
     values: [Types.MaxGasForMatchingStruct]
   ): string;
@@ -464,24 +459,8 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
-    functionFragment: "setP2PDisabledStatus",
-    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
-  ): string;
-  encodeFunctionData(
     functionFragment: "setP2PIndexCursor",
     values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setPartialPauseStatus",
-    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setPauseStatus",
-    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setPauseStatusForAllMarkets",
-    values: [PromiseOrValue<boolean>]
   ): string;
   encodeFunctionData(
     functionFragment: "setReserveFactor",
@@ -562,6 +541,11 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "ONE", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "ST_ETH", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "ST_ETH_BASE_REBASE_INDEX",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "VARIABLE_INTEREST_MODE",
     data: BytesLike
@@ -673,10 +657,6 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setClaimRewardsPauseStatus",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "setDefaultMaxGasForMatching",
     data: BytesLike
   ): Result;
@@ -741,23 +721,7 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setP2PDisabledStatus",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "setP2PIndexCursor",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setPartialPauseStatus",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setPauseStatus",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setPauseStatusForAllMarkets",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -1385,6 +1349,10 @@ export interface MorphoAaveV2 extends BaseContract {
 
     ONE(overrides?: CallOverrides): Promise<[string]>;
 
+    ST_ETH(overrides?: CallOverrides): Promise<[string]>;
+
+    ST_ETH_BASE_REBASE_INDEX(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     VARIABLE_INTEREST_MODE(overrides?: CallOverrides): Promise<[number]>;
 
     aaveIncentivesController(overrides?: CallOverrides): Promise<[string]>;
@@ -1583,11 +1551,6 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    setClaimRewardsPauseStatus(
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     setDefaultMaxGasForMatching(
       _defaultMaxGasForMatching: Types.MaxGasForMatchingStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -1676,32 +1639,9 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    setP2PDisabledStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     setP2PIndexCursor(
       _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    setPartialPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    setPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    setPauseStatusForAllMarkets(
-      _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -1785,6 +1725,10 @@ export interface MorphoAaveV2 extends BaseContract {
   NO_REFERRAL_CODE(overrides?: CallOverrides): Promise<number>;
 
   ONE(overrides?: CallOverrides): Promise<string>;
+
+  ST_ETH(overrides?: CallOverrides): Promise<string>;
+
+  ST_ETH_BASE_REBASE_INDEX(overrides?: CallOverrides): Promise<BigNumber>;
 
   VARIABLE_INTEREST_MODE(overrides?: CallOverrides): Promise<number>;
 
@@ -1982,11 +1926,6 @@ export interface MorphoAaveV2 extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  setClaimRewardsPauseStatus(
-    _newStatus: PromiseOrValue<boolean>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   setDefaultMaxGasForMatching(
     _defaultMaxGasForMatching: Types.MaxGasForMatchingStruct,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -2075,32 +2014,9 @@ export interface MorphoAaveV2 extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  setP2PDisabledStatus(
-    _poolToken: PromiseOrValue<string>,
-    _newStatus: PromiseOrValue<boolean>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   setP2PIndexCursor(
     _poolToken: PromiseOrValue<string>,
     _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  setPartialPauseStatus(
-    _poolToken: PromiseOrValue<string>,
-    _newStatus: PromiseOrValue<boolean>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  setPauseStatus(
-    _poolToken: PromiseOrValue<string>,
-    _newStatus: PromiseOrValue<boolean>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  setPauseStatusForAllMarkets(
-    _newStatus: PromiseOrValue<boolean>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -2182,6 +2098,10 @@ export interface MorphoAaveV2 extends BaseContract {
     NO_REFERRAL_CODE(overrides?: CallOverrides): Promise<number>;
 
     ONE(overrides?: CallOverrides): Promise<string>;
+
+    ST_ETH(overrides?: CallOverrides): Promise<string>;
+
+    ST_ETH_BASE_REBASE_INDEX(overrides?: CallOverrides): Promise<BigNumber>;
 
     VARIABLE_INTEREST_MODE(overrides?: CallOverrides): Promise<number>;
 
@@ -2379,11 +2299,6 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    setClaimRewardsPauseStatus(
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     setDefaultMaxGasForMatching(
       _defaultMaxGasForMatching: Types.MaxGasForMatchingStruct,
       overrides?: CallOverrides
@@ -2472,32 +2387,9 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    setP2PDisabledStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     setP2PIndexCursor(
       _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    setPartialPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    setPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    setPauseStatusForAllMarkets(
-      _newStatus: PromiseOrValue<boolean>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -2954,6 +2846,10 @@ export interface MorphoAaveV2 extends BaseContract {
 
     ONE(overrides?: CallOverrides): Promise<BigNumber>;
 
+    ST_ETH(overrides?: CallOverrides): Promise<BigNumber>;
+
+    ST_ETH_BASE_REBASE_INDEX(overrides?: CallOverrides): Promise<BigNumber>;
+
     VARIABLE_INTEREST_MODE(overrides?: CallOverrides): Promise<BigNumber>;
 
     aaveIncentivesController(overrides?: CallOverrides): Promise<BigNumber>;
@@ -3108,11 +3004,6 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    setClaimRewardsPauseStatus(
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     setDefaultMaxGasForMatching(
       _defaultMaxGasForMatching: Types.MaxGasForMatchingStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -3201,32 +3092,9 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    setP2PDisabledStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     setP2PIndexCursor(
       _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    setPartialPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    setPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    setPauseStatusForAllMarkets(
-      _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -3309,6 +3177,12 @@ export interface MorphoAaveV2 extends BaseContract {
     NO_REFERRAL_CODE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     ONE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    ST_ETH(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    ST_ETH_BASE_REBASE_INDEX(
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
 
     VARIABLE_INTEREST_MODE(
       overrides?: CallOverrides
@@ -3478,11 +3352,6 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    setClaimRewardsPauseStatus(
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     setDefaultMaxGasForMatching(
       _defaultMaxGasForMatching: Types.MaxGasForMatchingStruct,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
@@ -3571,32 +3440,9 @@ export interface MorphoAaveV2 extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    setP2PDisabledStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     setP2PIndexCursor(
       _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    setPartialPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    setPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    setPauseStatusForAllMarkets(
-      _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

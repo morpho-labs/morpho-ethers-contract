@@ -116,10 +116,7 @@ export interface MorphoCompoundInterface extends utils.Interface {
     "setIsSupplyPaused(address,bool)": FunctionFragment;
     "setIsWithdrawPaused(address,bool)": FunctionFragment;
     "setMaxSortedUsers(uint256)": FunctionFragment;
-    "setP2PDisable(address,bool)": FunctionFragment;
     "setP2PIndexCursor(address,uint16)": FunctionFragment;
-    "setPartialPauseStatus(address,bool)": FunctionFragment;
-    "setPauseStatus(address,bool)": FunctionFragment;
     "setPositionsManager(address)": FunctionFragment;
     "setReserveFactor(address,uint16)": FunctionFragment;
     "setRewardsManager(address)": FunctionFragment;
@@ -191,10 +188,7 @@ export interface MorphoCompoundInterface extends utils.Interface {
       | "setIsSupplyPaused"
       | "setIsWithdrawPaused"
       | "setMaxSortedUsers"
-      | "setP2PDisable"
       | "setP2PIndexCursor"
-      | "setPartialPauseStatus"
-      | "setPauseStatus"
       | "setPositionsManager"
       | "setReserveFactor"
       | "setRewardsManager"
@@ -444,20 +438,8 @@ export interface MorphoCompoundInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>]
   ): string;
   encodeFunctionData(
-    functionFragment: "setP2PDisable",
-    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
-  ): string;
-  encodeFunctionData(
     functionFragment: "setP2PIndexCursor",
     values: [PromiseOrValue<string>, PromiseOrValue<BigNumberish>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setPartialPauseStatus",
-    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "setPauseStatus",
-    values: [PromiseOrValue<string>, PromiseOrValue<boolean>]
   ): string;
   encodeFunctionData(
     functionFragment: "setPositionsManager",
@@ -708,19 +690,7 @@ export interface MorphoCompoundInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "setP2PDisable",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
     functionFragment: "setP2PIndexCursor",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setPartialPauseStatus",
-    data: BytesLike
-  ): Result;
-  decodeFunctionResult(
-    functionFragment: "setPauseStatus",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -1619,27 +1589,9 @@ export interface MorphoCompound extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    setP2PDisable(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
     setP2PIndexCursor(
       _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    setPartialPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<ContractTransaction>;
-
-    setPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -2009,27 +1961,9 @@ export interface MorphoCompound extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  setP2PDisable(
-    _poolToken: PromiseOrValue<string>,
-    _newStatus: PromiseOrValue<boolean>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
   setP2PIndexCursor(
     _poolToken: PromiseOrValue<string>,
     _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  setPartialPauseStatus(
-    _poolToken: PromiseOrValue<string>,
-    _newStatus: PromiseOrValue<boolean>,
-    overrides?: Overrides & { from?: PromiseOrValue<string> }
-  ): Promise<ContractTransaction>;
-
-  setPauseStatus(
-    _poolToken: PromiseOrValue<string>,
-    _newStatus: PromiseOrValue<boolean>,
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -2397,27 +2331,9 @@ export interface MorphoCompound extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    setP2PDisable(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
     setP2PIndexCursor(
       _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    setPartialPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: CallOverrides
-    ): Promise<void>;
-
-    setPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -3110,27 +3026,9 @@ export interface MorphoCompound extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    setP2PDisable(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
     setP2PIndexCursor(
       _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    setPartialPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<BigNumber>;
-
-    setPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -3465,27 +3363,9 @@ export interface MorphoCompound extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    setP2PDisable(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
     setP2PIndexCursor(
       _poolToken: PromiseOrValue<string>,
       _p2pIndexCursor: PromiseOrValue<BigNumberish>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    setPartialPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
-      overrides?: Overrides & { from?: PromiseOrValue<string> }
-    ): Promise<PopulatedTransaction>;
-
-    setPauseStatus(
-      _poolToken: PromiseOrValue<string>,
-      _newStatus: PromiseOrValue<boolean>,
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

@@ -636,6 +636,62 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "_poolToken",
+        "type": "address"
+      }
+    ],
+    "name": "getMarketPauseStatus",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "bool",
+            "name": "isSupplyPaused",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isBorrowPaused",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isWithdrawPaused",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isRepayPaused",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isLiquidateCollateralPaused",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isLiquidateBorrowPaused",
+            "type": "bool"
+          },
+          {
+            "internalType": "bool",
+            "name": "isDeprecated",
+            "type": "bool"
+          }
+        ],
+        "internalType": "struct Types.MarketPauseStatus",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "_poolTokenAddress",
         "type": "address"
       },
@@ -1080,6 +1136,11 @@
         "type": "address"
       },
       {
+        "internalType": "address",
+        "name": "_poolToken",
+        "type": "address"
+      },
+      {
         "internalType": "address[]",
         "name": "_updatedMarkets",
         "type": "address[]"
@@ -1100,49 +1161,16 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_poolTokenAddress",
+        "name": "_user",
         "type": "address"
-      }
-    ],
-    "name": "isMarketCreated",
-    "outputs": [
+      },
       {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
+        "internalType": "address[]",
+        "name": "_updatedMarkets",
+        "type": "address[]"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_poolTokenAddress",
-        "type": "address"
-      }
-    ],
-    "name": "isMarketCreatedAndNotPaused",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_poolTokenAddress",
-        "type": "address"
-      }
-    ],
-    "name": "isMarketCreatedAndNotPausedNorPartiallyPaused",
+    "name": "isLiquidatable",
     "outputs": [
       {
         "internalType": "bool",
