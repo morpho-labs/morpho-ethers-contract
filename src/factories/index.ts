@@ -8,3 +8,4 @@ export { ERC20__factory } from "./ERC20__factory";
 export { MorphoToken__factory } from "./MorphoToken__factory";
 export { RewardsDistributor__factory } from "./RewardsDistributor__factory";
 export { StEth__factory } from "./StEth__factory";
+export { Weth__factory } from "./Weth__factory";

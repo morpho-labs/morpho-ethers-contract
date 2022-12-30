@@ -16,6 +16,7 @@ export type { ERC20 } from "./ERC20";
 export type { MorphoToken } from "./MorphoToken";
 export type { RewardsDistributor } from "./RewardsDistributor";
 export type { StEth } from "./StEth";
+export type { Weth } from "./Weth";
 export * as factories from "./factories";
 export type { AavePriceOracle } from "./aave-v2/mainnet/AavePriceOracle";
 export { AavePriceOracle__factory } from "./factories/aave-v2/mainnet/AavePriceOracle__factory";
@@ -49,3 +50,4 @@ export { RewardsDistributor__factory } from "./factories/RewardsDistributor__fac
 export { StEth__factory } from "./factories/StEth__factory";
 export type { SwapRouter } from "./uniswap/SwapRouter";
 export { SwapRouter__factory } from "./factories/uniswap/SwapRouter__factory";
+export { Weth__factory } from "./factories/Weth__factory";
