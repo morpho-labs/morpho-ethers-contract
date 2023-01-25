@@ -7,5 +7,6 @@ export { LendingPool__factory } from "./LendingPool__factory";
 export { LendingPoolAddressesProvider__factory } from "./LendingPoolAddressesProvider__factory";
 export { MorphoAaveV2__factory } from "./MorphoAaveV2__factory";
 export { MorphoAaveV2Lens__factory } from "./MorphoAaveV2Lens__factory";
+export { MorphoAaveV2SupplyVault__factory } from "./MorphoAaveV2SupplyVault__factory";
 export { ProtocolDataProvider__factory } from "./ProtocolDataProvider__factory";
 export { VariableDebtToken__factory } from "./VariableDebtToken__factory";

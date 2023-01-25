@@ -6,3 +6,4 @@ export type { CompoundOracle } from "./CompoundOracle";
 export type { Comptroller } from "./Comptroller";
 export type { MorphoCompound } from "./MorphoCompound";
 export type { MorphoCompoundLens } from "./MorphoCompoundLens";
+export type { MorphoCompoundSupplyVault } from "./MorphoCompoundSupplyVault";
