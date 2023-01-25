@@ -6,3 +6,4 @@ export { CompoundOracle__factory } from "./CompoundOracle__factory";
 export { Comptroller__factory } from "./Comptroller__factory";
 export { MorphoCompound__factory } from "./MorphoCompound__factory";
 export { MorphoCompoundLens__factory } from "./MorphoCompoundLens__factory";
+export { MorphoCompoundSupplyVault__factory } from "./MorphoCompoundSupplyVault__factory";

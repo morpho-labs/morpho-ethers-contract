@@ -7,5 +7,6 @@ export type { LendingPool } from "./LendingPool";
 export type { LendingPoolAddressesProvider } from "./LendingPoolAddressesProvider";
 export type { MorphoAaveV2 } from "./MorphoAaveV2";
 export type { MorphoAaveV2Lens } from "./MorphoAaveV2Lens";
+export type { MorphoAaveV2SupplyVault } from "./MorphoAaveV2SupplyVault";
 export type { ProtocolDataProvider } from "./ProtocolDataProvider";
 export type { VariableDebtToken } from "./VariableDebtToken";
