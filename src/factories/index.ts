@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as aaveV2 from "./aave-v2";
+export * as aaveV3 from "./aave-v3";
 export * as compound from "./compound";
 export * as uniswap from "./uniswap";
 export { ERC20__factory } from "./ERC20__factory";

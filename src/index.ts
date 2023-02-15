@@ -4,10 +4,13 @@
 
 /* eslint-disable */
 import type * as aaveV2 from "./aave-v2";
+import type * as aaveV3 from "./aave-v3";
 import type * as compound from "./compound";
 import type * as uniswap from "./uniswap";
 
 export type { aaveV2 };
+
+export type { aaveV3 };
 
 export type { compound };
 
@@ -36,6 +39,14 @@ export type { ProtocolDataProvider } from "./aave-v2/mainnet/ProtocolDataProvide
 export { ProtocolDataProvider__factory } from "./factories/aave-v2/mainnet/ProtocolDataProvider__factory";
 export type { VariableDebtToken } from "./aave-v2/mainnet/VariableDebtToken";
 export { VariableDebtToken__factory } from "./factories/aave-v2/mainnet/VariableDebtToken__factory";
+export type { AaveV3AddressesProvider } from "./aave-v3/AaveV3AddressesProvider";
+export { AaveV3AddressesProvider__factory } from "./factories/aave-v3/AaveV3AddressesProvider__factory";
+export type { AaveV3DataProvider } from "./aave-v3/AaveV3DataProvider";
+export { AaveV3DataProvider__factory } from "./factories/aave-v3/AaveV3DataProvider__factory";
+export type { AaveV3Oracle } from "./aave-v3/AaveV3Oracle";
+export { AaveV3Oracle__factory } from "./factories/aave-v3/AaveV3Oracle__factory";
+export type { AaveV3Pool } from "./aave-v3/AaveV3Pool";
+export { AaveV3Pool__factory } from "./factories/aave-v3/AaveV3Pool__factory";
 export type { CompoundOracle } from "./compound/CompoundOracle";
 export { CompoundOracle__factory } from "./factories/compound/CompoundOracle__factory";
 export type { Comptroller } from "./compound/Comptroller";
