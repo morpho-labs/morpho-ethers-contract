@@ -42,12 +42,14 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     "deposit(uint256,address)": FunctionFragment;
     "increaseAllowance(address,uint256)": FunctionFragment;
     "initialize(address,string,string,uint256)": FunctionFragment;
+    "lens()": FunctionFragment;
     "maxDeposit(address)": FunctionFragment;
     "maxMint(address)": FunctionFragment;
     "maxRedeem(address)": FunctionFragment;
     "maxWithdraw(address)": FunctionFragment;
     "mint(uint256,address)": FunctionFragment;
     "morpho()": FunctionFragment;
+    "morphoToken()": FunctionFragment;
     "name()": FunctionFragment;
     "owner()": FunctionFragment;
     "poolToken()": FunctionFragment;
@@ -55,6 +57,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     "previewMint(uint256)": FunctionFragment;
     "previewRedeem(uint256)": FunctionFragment;
     "previewWithdraw(uint256)": FunctionFragment;
+    "recipient()": FunctionFragment;
     "redeem(uint256,address,address)": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "symbol()": FunctionFragment;
@@ -63,7 +66,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     "transfer(address,uint256)": FunctionFragment;
     "transferFrom(address,address,uint256)": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
-    "transferTokens(address,address,uint256)": FunctionFragment;
+    "transferRewards()": FunctionFragment;
     "withdraw(uint256,address,address)": FunctionFragment;
   };
 
@@ -80,12 +83,14 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
       | "deposit"
       | "increaseAllowance"
       | "initialize"
+      | "lens"
       | "maxDeposit"
       | "maxMint"
       | "maxRedeem"
       | "maxWithdraw"
       | "mint"
       | "morpho"
+      | "morphoToken"
       | "name"
       | "owner"
       | "poolToken"
@@ -93,6 +98,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
       | "previewMint"
       | "previewRedeem"
       | "previewWithdraw"
+      | "recipient"
       | "redeem"
       | "renounceOwnership"
       | "symbol"
@@ -101,7 +107,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
       | "transfer"
       | "transferFrom"
       | "transferOwnership"
-      | "transferTokens"
+      | "transferRewards"
       | "withdraw"
   ): FunctionFragment;
 
@@ -148,6 +154,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
       PromiseOrValue<BigNumberish>
     ]
   ): string;
+  encodeFunctionData(functionFragment: "lens", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "maxDeposit",
     values: [PromiseOrValue<string>]
@@ -169,6 +176,10 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     values: [PromiseOrValue<BigNumberish>, PromiseOrValue<string>]
   ): string;
   encodeFunctionData(functionFragment: "morpho", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "morphoToken",
+    values?: undefined
+  ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "poolToken", values?: undefined): string;
@@ -188,6 +199,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     functionFragment: "previewWithdraw",
     values: [PromiseOrValue<BigNumberish>]
   ): string;
+  encodeFunctionData(functionFragment: "recipient", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "redeem",
     values: [
@@ -226,12 +238,8 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     values: [PromiseOrValue<string>]
   ): string;
   encodeFunctionData(
-    functionFragment: "transferTokens",
-    values: [
-      PromiseOrValue<string>,
-      PromiseOrValue<string>,
-      PromiseOrValue<BigNumberish>
-    ]
+    functionFragment: "transferRewards",
+    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "withdraw",
@@ -265,6 +273,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "lens", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "maxDeposit", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "maxMint", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "maxRedeem", data: BytesLike): Result;
@@ -274,6 +283,10 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "morpho", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "morphoToken",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "poolToken", data: BytesLike): Result;
@@ -293,6 +306,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     functionFragment: "previewWithdraw",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "recipient", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "redeem", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
@@ -317,7 +331,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "transferTokens",
+    functionFragment: "transferRewards",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
@@ -327,6 +341,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
     "Deposit(address,address,uint256,uint256)": EventFragment;
     "Initialized(uint8)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
+    "RewardsTransferred(address,uint256)": EventFragment;
     "Transfer(address,address,uint256)": EventFragment;
     "Withdraw(address,address,address,uint256,uint256)": EventFragment;
   };
@@ -335,6 +350,7 @@ export interface MorphoAaveV2SupplyVaultInterface extends utils.Interface {
   getEvent(nameOrSignatureOrTopic: "Deposit"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Initialized"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "RewardsTransferred"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Withdraw"): EventFragment;
 }
@@ -382,6 +398,18 @@ export type OwnershipTransferredEvent = TypedEvent<
 
 export type OwnershipTransferredEventFilter =
   TypedEventFilter<OwnershipTransferredEvent>;
+
+export interface RewardsTransferredEventObject {
+  recipient: string;
+  amount: BigNumber;
+}
+export type RewardsTransferredEvent = TypedEvent<
+  [string, BigNumber],
+  RewardsTransferredEventObject
+>;
+
+export type RewardsTransferredEventFilter =
+  TypedEventFilter<RewardsTransferredEvent>;
 
 export interface TransferEventObject {
   from: string;
@@ -493,6 +521,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
+    lens(overrides?: CallOverrides): Promise<[string]>;
+
     maxDeposit(
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -521,6 +551,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
 
     morpho(overrides?: CallOverrides): Promise<[string]>;
 
+    morphoToken(overrides?: CallOverrides): Promise<[string]>;
+
     name(overrides?: CallOverrides): Promise<[string]>;
 
     owner(overrides?: CallOverrides): Promise<[string]>;
@@ -546,6 +578,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       assets: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
+
+    recipient(overrides?: CallOverrides): Promise<[string]>;
 
     redeem(
       shares: PromiseOrValue<BigNumberish>,
@@ -582,10 +616,7 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
-    transferTokens(
-      _asset: PromiseOrValue<string>,
-      _to: PromiseOrValue<string>,
-      _amount: PromiseOrValue<BigNumberish>,
+    transferRewards(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<ContractTransaction>;
 
@@ -654,6 +685,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
+  lens(overrides?: CallOverrides): Promise<string>;
+
   maxDeposit(
     arg0: PromiseOrValue<string>,
     overrides?: CallOverrides
@@ -682,6 +715,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
 
   morpho(overrides?: CallOverrides): Promise<string>;
 
+  morphoToken(overrides?: CallOverrides): Promise<string>;
+
   name(overrides?: CallOverrides): Promise<string>;
 
   owner(overrides?: CallOverrides): Promise<string>;
@@ -707,6 +742,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
     assets: PromiseOrValue<BigNumberish>,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
+
+  recipient(overrides?: CallOverrides): Promise<string>;
 
   redeem(
     shares: PromiseOrValue<BigNumberish>,
@@ -743,10 +780,7 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
-  transferTokens(
-    _asset: PromiseOrValue<string>,
-    _to: PromiseOrValue<string>,
-    _amount: PromiseOrValue<BigNumberish>,
+  transferRewards(
     overrides?: Overrides & { from?: PromiseOrValue<string> }
   ): Promise<ContractTransaction>;
 
@@ -815,6 +849,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
+    lens(overrides?: CallOverrides): Promise<string>;
+
     maxDeposit(
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -843,6 +879,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
 
     morpho(overrides?: CallOverrides): Promise<string>;
 
+    morphoToken(overrides?: CallOverrides): Promise<string>;
+
     name(overrides?: CallOverrides): Promise<string>;
 
     owner(overrides?: CallOverrides): Promise<string>;
@@ -868,6 +906,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       assets: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    recipient(overrides?: CallOverrides): Promise<string>;
 
     redeem(
       shares: PromiseOrValue<BigNumberish>,
@@ -902,12 +942,7 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    transferTokens(
-      _asset: PromiseOrValue<string>,
-      _to: PromiseOrValue<string>,
-      _amount: PromiseOrValue<BigNumberish>,
-      overrides?: CallOverrides
-    ): Promise<void>;
+    transferRewards(overrides?: CallOverrides): Promise<void>;
 
     withdraw(
       assets: PromiseOrValue<BigNumberish>,
@@ -953,6 +988,15 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       previousOwner?: PromiseOrValue<string> | null,
       newOwner?: PromiseOrValue<string> | null
     ): OwnershipTransferredEventFilter;
+
+    "RewardsTransferred(address,uint256)"(
+      recipient?: null,
+      amount?: null
+    ): RewardsTransferredEventFilter;
+    RewardsTransferred(
+      recipient?: null,
+      amount?: null
+    ): RewardsTransferredEventFilter;
 
     "Transfer(address,address,uint256)"(
       from?: PromiseOrValue<string> | null,
@@ -1039,6 +1083,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
+    lens(overrides?: CallOverrides): Promise<BigNumber>;
+
     maxDeposit(
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -1067,6 +1113,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
 
     morpho(overrides?: CallOverrides): Promise<BigNumber>;
 
+    morphoToken(overrides?: CallOverrides): Promise<BigNumber>;
+
     name(overrides?: CallOverrides): Promise<BigNumber>;
 
     owner(overrides?: CallOverrides): Promise<BigNumber>;
@@ -1092,6 +1140,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       assets: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    recipient(overrides?: CallOverrides): Promise<BigNumber>;
 
     redeem(
       shares: PromiseOrValue<BigNumberish>,
@@ -1128,10 +1178,7 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
-    transferTokens(
-      _asset: PromiseOrValue<string>,
-      _to: PromiseOrValue<string>,
-      _amount: PromiseOrValue<BigNumberish>,
+    transferRewards(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<BigNumber>;
 
@@ -1201,6 +1248,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
+    lens(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     maxDeposit(
       arg0: PromiseOrValue<string>,
       overrides?: CallOverrides
@@ -1229,6 +1278,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
 
     morpho(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
+    morphoToken(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     owner(overrides?: CallOverrides): Promise<PopulatedTransaction>;
@@ -1254,6 +1305,8 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       assets: PromiseOrValue<BigNumberish>,
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
+
+    recipient(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     redeem(
       shares: PromiseOrValue<BigNumberish>,
@@ -1290,10 +1343,7 @@ export interface MorphoAaveV2SupplyVault extends BaseContract {
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 
-    transferTokens(
-      _asset: PromiseOrValue<string>,
-      _to: PromiseOrValue<string>,
-      _amount: PromiseOrValue<BigNumberish>,
+    transferRewards(
       overrides?: Overrides & { from?: PromiseOrValue<string> }
     ): Promise<PopulatedTransaction>;
 

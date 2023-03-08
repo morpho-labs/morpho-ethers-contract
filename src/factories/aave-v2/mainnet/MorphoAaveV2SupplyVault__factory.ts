@@ -18,6 +18,21 @@ const _abi = [
         name: "_morpho",
         type: "address",
       },
+      {
+        internalType: "address",
+        name: "_morphoToken",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_lens",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_recipient",
+        type: "address",
+      },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
@@ -113,6 +128,25 @@ const _abi = [
       },
     ],
     name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "recipient",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
+    name: "RewardsTransferred",
     type: "event",
   },
   {
@@ -409,6 +443,19 @@ const _abi = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "lens",
+    outputs: [
+      {
+        internalType: "contract ILens",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "address",
@@ -514,6 +561,19 @@ const _abi = [
     outputs: [
       {
         internalType: "contract IMorpho",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "morphoToken",
+    outputs: [
+      {
+        internalType: "contract ERC20",
         name: "",
         type: "address",
       },
@@ -631,6 +691,19 @@ const _abi = [
         internalType: "uint256",
         name: "",
         type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "recipient",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
       },
     ],
     stateMutability: "view",
@@ -778,24 +851,8 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_asset",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-    ],
-    name: "transferTokens",
+    inputs: [],
+    name: "transferRewards",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
