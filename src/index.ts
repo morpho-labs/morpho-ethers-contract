@@ -5,12 +5,15 @@
 /* eslint-disable */
 import type * as aaveV2 from "./aave-v2";
 import type * as aaveV3 from "./aave-v3";
+import type * as chainlink from "./chainlink";
 import type * as compound from "./compound";
 import type * as uniswap from "./uniswap";
 
 export type { aaveV2 };
 
 export type { aaveV3 };
+
+export type { chainlink };
 
 export type { compound };
 
@@ -47,6 +50,8 @@ export type { AaveV3Oracle } from "./aave-v3/AaveV3Oracle";
 export { AaveV3Oracle__factory } from "./factories/aave-v3/AaveV3Oracle__factory";
 export type { AaveV3Pool } from "./aave-v3/AaveV3Pool";
 export { AaveV3Pool__factory } from "./factories/aave-v3/AaveV3Pool__factory";
+export type { ChainlinkPriceFeed } from "./chainlink/ChainlinkPriceFeed";
+export { ChainlinkPriceFeed__factory } from "./factories/chainlink/ChainlinkPriceFeed__factory";
 export type { CompoundOracle } from "./compound/CompoundOracle";
 export { CompoundOracle__factory } from "./factories/compound/CompoundOracle__factory";
 export type { Comptroller } from "./compound/Comptroller";
