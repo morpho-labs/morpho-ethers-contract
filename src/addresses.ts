@@ -31,6 +31,7 @@ const addresses = {
     addressesProvider: "0x2f39d218133AFaB8F2B819B1066c7E434Ad94E9e",
     poolDataProvider: "0x7B4EB56E7CD4b454BA8ff71E4518426369a138a3",
   },
+  permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
 };
 
 export default addresses;
