@@ -20,6 +20,7 @@ export type { compound };
 export type { uniswap };
 export type { ERC20 } from "./ERC20";
 export type { MorphoToken } from "./MorphoToken";
+export type { Multicall3 } from "./Multicall3";
 export type { Permit2 } from "./Permit2";
 export type { RewardsDistributor } from "./RewardsDistributor";
 export type { StEth } from "./StEth";
@@ -67,6 +68,7 @@ export type { MorphoCompoundSupplyVault } from "./compound/MorphoCompoundSupplyV
 export { MorphoCompoundSupplyVault__factory } from "./factories/compound/MorphoCompoundSupplyVault__factory";
 export { ERC20__factory } from "./factories/ERC20__factory";
 export { MorphoToken__factory } from "./factories/MorphoToken__factory";
+export { Multicall3__factory } from "./factories/Multicall3__factory";
 export { Permit2__factory } from "./factories/Permit2__factory";
 export { RewardsDistributor__factory } from "./factories/RewardsDistributor__factory";
 export { StEth__factory } from "./factories/StEth__factory";
