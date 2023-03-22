@@ -32,6 +32,7 @@ const addresses = {
     poolDataProvider: "0x7B4EB56E7CD4b454BA8ff71E4518426369a138a3",
   },
   permit2: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+  multicall3: "0xcA11bde05977b3631167028862bE2a173976CA11" // Same address on all supported networks
 };
 
 export default addresses;
