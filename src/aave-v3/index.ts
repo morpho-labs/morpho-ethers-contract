@@ -5,3 +5,4 @@ export type { AaveV3AddressesProvider } from "./AaveV3AddressesProvider";
 export type { AaveV3DataProvider } from "./AaveV3DataProvider";
 export type { AaveV3Oracle } from "./AaveV3Oracle";
 export type { AaveV3Pool } from "./AaveV3Pool";
+export type { MorphoAaveV3 } from "./MorphoAaveV3";
