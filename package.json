@@ -24,7 +24,7 @@
   "scripts": {
     "build": "tsc --build ./tsconfig.build.json",
     "clean": "rm -rf ./lib/",
-    "generate": "rm -rf src && typechain --target=ethers-v5 --out-dir src \"./abis/**/*.json\"",
+    "generate": "typechain --target=ethers-v5 --out-dir src \"./abis/**/*.json\"",
     "cm": "cz",
     "lint": "eslint ./src --fix",
     "prepare": "husky install",
