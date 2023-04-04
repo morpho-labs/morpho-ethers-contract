@@ -1112,8 +1112,8 @@ export type CollateralSuppliedEventFilter =
 
 export interface BorrowedEventObject {
   caller: string;
-  from: string;
   onBehalf: string;
+  receiver: string;
   underlying: string;
   amount: BigNumber;
   scaledOnPool: BigNumber;
@@ -1127,7 +1127,7 @@ export type BorrowedEvent = TypedEvent<
 export type BorrowedEventFilter = TypedEventFilter<BorrowedEvent>;
 
 export interface RepaidEventObject {
-  from: string;
+  repayer: string;
   onBehalf: string;
   underlying: string;
   amount: BigNumber;
@@ -1143,8 +1143,8 @@ export type RepaidEventFilter = TypedEventFilter<RepaidEvent>;
 
 export interface WithdrawnEventObject {
   caller: string;
-  from: string;
   onBehalf: string;
+  receiver: string;
   underlying: string;
   amount: BigNumber;
   scaledOnPool: BigNumber;
@@ -2814,8 +2814,8 @@ export interface MorphoAaveV3 extends BaseContract {
 
     "Borrowed(address,address,address,address,uint256,uint256,uint256)"(
       caller?: null,
-      from?: PromiseOrValue<string> | null,
       onBehalf?: PromiseOrValue<string> | null,
+      receiver?: PromiseOrValue<string> | null,
       underlying?: PromiseOrValue<string> | null,
       amount?: null,
       scaledOnPool?: null,
@@ -2823,8 +2823,8 @@ export interface MorphoAaveV3 extends BaseContract {
     ): BorrowedEventFilter;
     Borrowed(
       caller?: null,
-      from?: PromiseOrValue<string> | null,
       onBehalf?: PromiseOrValue<string> | null,
+      receiver?: PromiseOrValue<string> | null,
       underlying?: PromiseOrValue<string> | null,
       amount?: null,
       scaledOnPool?: null,
@@ -2832,7 +2832,7 @@ export interface MorphoAaveV3 extends BaseContract {
     ): BorrowedEventFilter;
 
     "Repaid(address,address,address,uint256,uint256,uint256)"(
-      from?: PromiseOrValue<string> | null,
+      repayer?: PromiseOrValue<string> | null,
       onBehalf?: PromiseOrValue<string> | null,
       underlying?: PromiseOrValue<string> | null,
       amount?: null,
@@ -2840,7 +2840,7 @@ export interface MorphoAaveV3 extends BaseContract {
       scaledInP2P?: null
     ): RepaidEventFilter;
     Repaid(
-      from?: PromiseOrValue<string> | null,
+      repayer?: PromiseOrValue<string> | null,
       onBehalf?: PromiseOrValue<string> | null,
       underlying?: PromiseOrValue<string> | null,
       amount?: null,
@@ -2850,8 +2850,8 @@ export interface MorphoAaveV3 extends BaseContract {
 
     "Withdrawn(address,address,address,address,uint256,uint256,uint256)"(
       caller?: null,
-      from?: PromiseOrValue<string> | null,
       onBehalf?: PromiseOrValue<string> | null,
+      receiver?: PromiseOrValue<string> | null,
       underlying?: PromiseOrValue<string> | null,
       amount?: null,
       scaledOnPool?: null,
@@ -2859,8 +2859,8 @@ export interface MorphoAaveV3 extends BaseContract {
     ): WithdrawnEventFilter;
     Withdrawn(
       caller?: null,
-      from?: PromiseOrValue<string> | null,
       onBehalf?: PromiseOrValue<string> | null,
+      receiver?: PromiseOrValue<string> | null,
       underlying?: PromiseOrValue<string> | null,
       amount?: null,
       scaledOnPool?: null,

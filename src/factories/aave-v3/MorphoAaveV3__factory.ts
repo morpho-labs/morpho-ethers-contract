@@ -349,13 +349,13 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "from",
+        name: "onBehalf",
         type: "address",
       },
       {
         indexed: true,
         internalType: "address",
-        name: "onBehalf",
+        name: "receiver",
         type: "address",
       },
       {
@@ -392,7 +392,7 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "from",
+        name: "repayer",
         type: "address",
       },
       {
@@ -441,13 +441,13 @@ const _abi = [
       {
         indexed: true,
         internalType: "address",
-        name: "from",
+        name: "onBehalf",
         type: "address",
       },
       {
         indexed: true,
         internalType: "address",
-        name: "onBehalf",
+        name: "receiver",
         type: "address",
       },
       {
