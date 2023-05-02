@@ -12,11 +12,6 @@
   },
   {
     "inputs": [],
-    "name": "PercentageTooHigh",
-    "type": "error"
-  },
-  {
-    "inputs": [],
     "name": "DEFAULT_LIQUIDATION_CLOSE_FACTOR",
     "outputs": [
       {
@@ -35,181 +30,6 @@
       {
         "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_poolToken",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "_getCurrentBorrowBalanceInOf",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "underlyingToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "balanceInP2P",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "balanceOnPool",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "totalBalance",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_poolToken",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_user",
-        "type": "address"
-      }
-    ],
-    "name": "_getCurrentSupplyBalanceInOf",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "underlyingToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "balanceInP2P",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "balanceOnPool",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "totalBalance",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_poolToken",
-        "type": "address"
-      }
-    ],
-    "name": "_getIndexes",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "underlyingToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "p2pSupplyIndex",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "p2pBorrowIndex",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "poolSupplyIndex",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "poolBorrowIndex",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_poolToken",
-        "type": "address"
-      }
-    ],
-    "name": "_getTotalMarketBorrow",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "underlyingToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "p2pBorrowAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "poolBorrowAmount",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_poolToken",
-        "type": "address"
-      }
-    ],
-    "name": "_getTotalMarketSupply",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "underlyingToken",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "p2pSupplyAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "poolSupplyAmount",
         "type": "uint256"
       }
     ],
@@ -295,24 +115,31 @@
     "name": "getAdvancedMarketData",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "p2pSupplyIndex",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "p2pBorrowIndex",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "poolSupplyIndex",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "poolBorrowIndex",
-        "type": "uint256"
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "p2pSupplyIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "p2pBorrowIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "poolSupplyIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "poolBorrowIndex",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Types.Indexes",
+        "name": "indexes",
+        "type": "tuple"
       },
       {
         "internalType": "uint32",
@@ -450,7 +277,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "currentP2PBorrowIndex",
+        "name": "p2pBorrowIndex",
         "type": "uint256"
       }
     ],
@@ -469,7 +296,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "currentP2PSupplyIndex",
+        "name": "p2pSupplyIndex",
         "type": "uint256"
       }
     ],
@@ -527,7 +354,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "borrowRatePerYear",
         "type": "uint256"
       }
     ],
@@ -551,7 +378,7 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "supplyRatePerYear",
         "type": "uint256"
       }
     ],
@@ -588,24 +415,31 @@
     "name": "getIndexes",
     "outputs": [
       {
-        "internalType": "uint256",
-        "name": "p2pSupplyIndex",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "p2pBorrowIndex",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "poolSupplyIndex",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "poolBorrowIndex",
-        "type": "uint256"
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "p2pSupplyIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "p2pBorrowIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "poolSupplyIndex",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "poolBorrowIndex",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Types.Indexes",
+        "name": "indexes",
+        "type": "tuple"
       }
     ],
     "stateMutability": "view",
@@ -880,22 +714,22 @@
     "outputs": [
       {
         "internalType": "uint256",
-        "name": "p2pSupplyRate",
+        "name": "",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "p2pBorrowRate",
+        "name": "",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "poolSupplyRate",
+        "name": "",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "poolBorrowRate",
+        "name": "",
         "type": "uint256"
       }
     ],
@@ -1010,22 +844,22 @@
         "components": [
           {
             "internalType": "uint256",
-            "name": "collateral",
+            "name": "collateralEth",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "maxDebt",
+            "name": "borrowableEth",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "liquidationThreshold",
+            "name": "maxDebtEth",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "debt",
+            "name": "debtEth",
             "type": "uint256"
           }
         ],
@@ -1085,22 +919,22 @@
         "components": [
           {
             "internalType": "uint256",
-            "name": "collateral",
+            "name": "collateralEth",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "maxDebt",
+            "name": "borrowableEth",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "liquidationThreshold",
+            "name": "maxDebtEth",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "debt",
+            "name": "debtEth",
             "type": "uint256"
           }
         ],
@@ -1195,17 +1029,17 @@
           },
           {
             "internalType": "uint256",
-            "name": "collateral",
+            "name": "collateralEth",
             "type": "uint256"
           },
           {
             "internalType": "uint256",
-            "name": "debt",
+            "name": "debtEth",
             "type": "uint256"
           }
         ],
         "internalType": "struct Types.AssetLiquidityData",
-        "name": "assetData",
+        "name": "",
         "type": "tuple"
       }
     ],
@@ -1301,6 +1135,44 @@
       }
     ],
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "isMarketCreatedAndNotPaused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "isMarketCreatedAndNotPausedNorPartiallyPaused",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "pure",
     "type": "function"
   },
   {
