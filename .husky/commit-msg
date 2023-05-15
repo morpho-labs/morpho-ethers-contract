@@ -4,7 +4,7 @@ COMMIT_MSG_FILE="$1"
 
 exec < /dev/tty
 
-if ! grep -iqE "((feat)|(fix)|(build))\([a-zA-Z0-9]+\):.+" "$COMMIT_MSG_FILE"; then
+if ! grep -iqE "((feat)|(fix)|(build))\([a-zA-Z0-9_-]+\)\!?:.+" "$COMMIT_MSG_FILE"; then
 	while true; do
 	read -p "This commit probably won't trigger a release. Do you want to continue? (N/y) " yn
 	if [ "$yn" = "" ]; then
