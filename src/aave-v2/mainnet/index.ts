@@ -5,6 +5,7 @@ export type { AToken } from "./AToken";
 export type { AavePriceOracle } from "./AavePriceOracle";
 export type { LendingPool } from "./LendingPool";
 export type { LendingPoolAddressesProvider } from "./LendingPoolAddressesProvider";
+export type { LendingPoolConfigurator } from "./LendingPoolConfigurator";
 export type { MorphoAaveV2 } from "./MorphoAaveV2";
 export type { MorphoAaveV2Lens } from "./MorphoAaveV2Lens";
 export type { MorphoAaveV2SupplyVault } from "./MorphoAaveV2SupplyVault";

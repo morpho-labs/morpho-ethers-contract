@@ -27,6 +27,8 @@ export type { LendingPool } from "./aave-v2/mainnet/LendingPool";
 export { LendingPool__factory } from "./factories/aave-v2/mainnet/LendingPool__factory";
 export type { LendingPoolAddressesProvider } from "./aave-v2/mainnet/LendingPoolAddressesProvider";
 export { LendingPoolAddressesProvider__factory } from "./factories/aave-v2/mainnet/LendingPoolAddressesProvider__factory";
+export type { LendingPoolConfigurator } from "./aave-v2/mainnet/LendingPoolConfigurator";
+export { LendingPoolConfigurator__factory } from "./factories/aave-v2/mainnet/LendingPoolConfigurator__factory";
 export type { MorphoAaveV2 } from "./aave-v2/mainnet/MorphoAaveV2";
 export { MorphoAaveV2__factory } from "./factories/aave-v2/mainnet/MorphoAaveV2__factory";
 export type { MorphoAaveV2Lens } from "./aave-v2/mainnet/MorphoAaveV2Lens";

@@ -5,6 +5,7 @@ export { AToken__factory } from "./AToken__factory";
 export { AavePriceOracle__factory } from "./AavePriceOracle__factory";
 export { LendingPool__factory } from "./LendingPool__factory";
 export { LendingPoolAddressesProvider__factory } from "./LendingPoolAddressesProvider__factory";
+export { LendingPoolConfigurator__factory } from "./LendingPoolConfigurator__factory";
 export { MorphoAaveV2__factory } from "./MorphoAaveV2__factory";
 export { MorphoAaveV2Lens__factory } from "./MorphoAaveV2Lens__factory";
 export { MorphoAaveV2SupplyVault__factory } from "./MorphoAaveV2SupplyVault__factory";
