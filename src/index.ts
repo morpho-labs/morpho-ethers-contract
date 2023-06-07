@@ -49,6 +49,8 @@ export type { AaveV3Pool } from "./aave-v3/AaveV3Pool";
 export { AaveV3Pool__factory } from "./factories/aave-v3/AaveV3Pool__factory";
 export type { MorphoAaveV3 } from "./aave-v3/MorphoAaveV3";
 export { MorphoAaveV3__factory } from "./factories/aave-v3/MorphoAaveV3__factory";
+export type { MorphoBulkerGateway } from "./aave-v3/MorphoBulkerGateway";
+export { MorphoBulkerGateway__factory } from "./factories/aave-v3/MorphoBulkerGateway__factory";
 export type { ChainlinkPriceFeed } from "./chainlink/ChainlinkPriceFeed";
 export { ChainlinkPriceFeed__factory } from "./factories/chainlink/ChainlinkPriceFeed__factory";
 export type { CompoundOracle } from "./compound/CompoundOracle";
