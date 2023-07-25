@@ -749,6 +749,7 @@ export interface MorphoCompoundInterface extends utils.Interface {
     "Repaid(address,address,address,uint256,uint256,uint256)": EventFragment;
     "Supplied(address,address,address,uint256,uint256,uint256)": EventFragment;
     "SupplierPositionUpdated(address,address,uint256,uint256)": EventFragment;
+    "P2PDeltasIncreased(address,uint256)": EventFragment;
     "Withdrawn(address,address,address,uint256,uint256,uint256)": EventFragment;
     "DefaultMaxGasForMatchingSet(tuple)": EventFragment;
     "DustThresholdSet(uint256)": EventFragment;
@@ -787,6 +788,7 @@ export interface MorphoCompoundInterface extends utils.Interface {
   getEvent(nameOrSignatureOrTopic: "Repaid"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Supplied"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SupplierPositionUpdated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "P2PDeltasIncreased"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Withdrawn"): EventFragment;
   getEvent(
     nameOrSignatureOrTopic: "DefaultMaxGasForMatchingSet"
@@ -957,6 +959,18 @@ export type SupplierPositionUpdatedEvent = TypedEvent<
 
 export type SupplierPositionUpdatedEventFilter =
   TypedEventFilter<SupplierPositionUpdatedEvent>;
+
+export interface P2PDeltasIncreasedEventObject {
+  _poolToken: string;
+  _amount: BigNumber;
+}
+export type P2PDeltasIncreasedEvent = TypedEvent<
+  [string, BigNumber],
+  P2PDeltasIncreasedEventObject
+>;
+
+export type P2PDeltasIncreasedEventFilter =
+  TypedEventFilter<P2PDeltasIncreasedEvent>;
 
 export interface WithdrawnEventObject {
   _supplier: string;
@@ -2542,6 +2556,15 @@ export interface MorphoCompound extends BaseContract {
       _balanceOnPool?: null,
       _balanceInP2P?: null
     ): SupplierPositionUpdatedEventFilter;
+
+    "P2PDeltasIncreased(address,uint256)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _amount?: null
+    ): P2PDeltasIncreasedEventFilter;
+    P2PDeltasIncreased(
+      _poolToken?: PromiseOrValue<string> | null,
+      _amount?: null
+    ): P2PDeltasIncreasedEventFilter;
 
     "Withdrawn(address,address,address,uint256,uint256,uint256)"(
       _supplier?: PromiseOrValue<string> | null,
