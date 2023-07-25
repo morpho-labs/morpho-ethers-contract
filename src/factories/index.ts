@@ -13,3 +13,4 @@ export { Permit2__factory } from "./Permit2__factory";
 export { RewardsDistributor__factory } from "./RewardsDistributor__factory";
 export { StEth__factory } from "./StEth__factory";
 export { Weth__factory } from "./Weth__factory";
+export { WstETH__factory } from "./WstETH__factory";
