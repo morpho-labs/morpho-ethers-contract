@@ -773,6 +773,7 @@ export interface MorphoAaveV2Interface extends utils.Interface {
     "BorrowerPositionUpdated(address,address,uint256,uint256)": EventFragment;
     "SupplierPositionUpdated(address,address,uint256,uint256)": EventFragment;
     "P2PIndexesUpdated(address,uint256,uint256,uint256,uint256)": EventFragment;
+    "P2PDeltasIncreased(address,uint256)": EventFragment;
     "Liquidated(address,address,address,uint256,address,uint256)": EventFragment;
     "Withdrawn(address,address,address,uint256,uint256,uint256)": EventFragment;
     "Repaid(address,address,address,uint256,uint256,uint256)": EventFragment;
@@ -812,6 +813,7 @@ export interface MorphoAaveV2Interface extends utils.Interface {
   getEvent(nameOrSignatureOrTopic: "BorrowerPositionUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SupplierPositionUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "P2PIndexesUpdated"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "P2PDeltasIncreased"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Liquidated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Withdrawn"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Repaid"): EventFragment;
@@ -957,6 +959,18 @@ export type P2PIndexesUpdatedEvent = TypedEvent<
 
 export type P2PIndexesUpdatedEventFilter =
   TypedEventFilter<P2PIndexesUpdatedEvent>;
+
+export interface P2PDeltasIncreasedEventObject {
+  _poolToken: string;
+  _amount: BigNumber;
+}
+export type P2PDeltasIncreasedEvent = TypedEvent<
+  [string, BigNumber],
+  P2PDeltasIncreasedEventObject
+>;
+
+export type P2PDeltasIncreasedEventFilter =
+  TypedEventFilter<P2PDeltasIncreasedEvent>;
 
 export interface LiquidatedEventObject {
   _liquidator: string;
@@ -2556,6 +2570,15 @@ export interface MorphoAaveV2 extends BaseContract {
       _poolSupplyIndex?: null,
       _poolBorrowIndex?: null
     ): P2PIndexesUpdatedEventFilter;
+
+    "P2PDeltasIncreased(address,uint256)"(
+      _poolToken?: PromiseOrValue<string> | null,
+      _amount?: null
+    ): P2PDeltasIncreasedEventFilter;
+    P2PDeltasIncreased(
+      _poolToken?: PromiseOrValue<string> | null,
+      _amount?: null
+    ): P2PDeltasIncreasedEventFilter;
 
     "Liquidated(address,address,address,uint256,address,uint256)"(
       _liquidator?: null,
